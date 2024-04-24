@@ -1,0 +1,28 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="left"></div>
+    <div class="wrapper">
+      <div class="title"><span>Sign Up</span></div>
+      <form (ngSubmit)="signUp()" [formGroup]="form">
+        <div class="row">
+          <input type="text" name="email" id="email" formControlName="email" required placeholder="Email">
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)" class="inv">Email is required</div>
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('email')?.errors?.['email']" class="inv">Please enter a valid email address</div>
+        </div>
+        <div class="row">
+          <input type="text" name="username" id="username" formControlName="username" required placeholder="Username">
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || form.get('email')?.touched)" class="inv">Username is required</div>
+         
+        </div>
+        <div class="row">
+          <input type="password" name="password" formControlName="password" required placeholder="Password">
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)" class="inv">Password is required</div>
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('password')?.errors?.['minlength']" class="inv">Password must be at least 6 characters</div>
+        </div>
+        <div class="row button">
+          <button class="button" type="submit">Sign Up</button>
+        </div>
+        <div class="signup-link">Already a member? <a (click)="Log()">Login now</a></div>
+      </form>
+    </div>
+  </div>

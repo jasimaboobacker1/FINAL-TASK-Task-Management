@@ -1,0 +1,52 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="wrapper">
+      <div class="title"><span>Add Task</span></div>
+      <form  (ngSubmit)="Addtaskk()" [formGroup]="form">
+       
+        <div class="row">
+            <input type="text" name="title" id="title" formControlName="title" required placeholder="Title">
+            <div *ngIf="formSubmitted && form.get('title')?.invalid" class="inv">Priority is required</div>
+        </div>
+        <div class="row">
+          <input type="text" name="description" id="description" formControlName="description" required placeholder="Description">
+          <div *ngIf="formSubmitted && form.get('description')?.invalid" class="inv">Description is required</div>
+      </div>
+      <div class="row">
+        <input type="date" name="dueDate" id="dueDate" formControlName="dueDate" required placeholder="dueDate">
+        <div *ngIf="formSubmitted && form.get('dueDate')?.invalid" class="inv">DueDate is required</div>
+    </div>
+          <div style="display: flex;justify-content: space-between;">
+             <div class="row">
+              <label for="priority">Priority:</label>
+              <select name="priority" id="priority" formControlName="priority" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <div *ngIf="formSubmitted && form.get('priority')?.invalid" class="inv">Priority is required
+                </div>
+            </div>
+            <div class="row">
+              <label for="status">Status:</label>
+              <select name="status" id="status" formControlName="status" required>
+                <option value="pending">Pending</option>
+                <option value="completed">Complete</option>
+              </select>
+              <div *ngIf="formSubmitted && form.get('status')?.invalid" class="inv">status is required
+                </div>
+            </div>
+          </div>
+          
+       
+        <div class="req">
+            <div class="row button">
+              <button class="button" type="submit">Add</button>
+            </div>
+            <!-- <div class="row button">
+                <button class="button" type="button" (click)="navigatetodashboard()">Cancel</button>
+              </div> -->
+        </div>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,94 @@
+<app-nav></app-nav>
+<div class="containerr">
+  <div class="left">
+    <div class="chart">
+      <!-- <canvas id="piechart">
+
+      </canvas>
+             -->
+    </div>
+  </div>
+  <div class="right" >
+    <div class="btnnss" ><button class="buttonn" (click)="Addnavigate()">Add Task</button>
+    </div>
+   <div class="tableeee" >
+    <div class="filterr">
+      <div>
+        <ul>
+          <li><a (click)="Alltask()">All Tasks</a></li>
+          <li><a (click)="Pending()">Pending Tasks</a></li>
+          <li><a (click)="Completed()">Completed Tasks</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- All Task display -->
+      <table *ngIf="Alltaskshow" class='content-table rounded shadow-lg bg-light text-dark border' style='width: 400px;'>
+        <thead class='border'>
+          <tr>
+            <th class='p-2 text-center' style='width: 150px;'>Title</th>
+            <th class='p-2 text-center' style='width: 150px;'>Due Date</th>
+            <th class='p-2 text-center' style='width: 150px;'>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(task of tasksDetails;track task.id){
+                <tr class='text-center'>
+            <td class='p-3'>{{task.title}}</td>
+            <td class='p-3'>{{task.dueDate}}</td>
+            <!-- <td class='p-3'>{{task.status}}  <input type="checkbox" [(ngModel)]="task.status" (change)="updateStatus(task)"></td> -->
+          </tr>
+        }@empty{
+          No tasks...! Add
+        }
+        </tbody>
+      </table>
+       <!-- pedding task table -->
+      <table *ngIf="Pendingtaskshow" class='content-table rounded shadow-lg bg-light text-dark border' style='width: 400px;'>
+        <thead class='border'>
+          <tr>
+            <th class='p-2 text-center' style='width: 150px;'>Title</th>
+            <th class='p-2 text-center' style='width: 150px;'>Due Date</th>
+            <th class='p-2 text-center' style='width: 150px;'>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(task of pendingTasks;track task.id){
+            <tr class='text-center'>
+        <td class='p-3'>{{task.title}}</td>
+        <td class='p-3'>{{task.dueDate}}</td>
+        <!-- <td class='p-3'>{{task.status}}  <input type="checkbox" [(ngModel)]="task.status" (click)="updateStatus(task.id)"></td> -->
+
+      </tr>
+    }@empty{
+      No tasks
+    }
+        </tbody>
+      </table>
+       <!-- Completed task table -->
+       <table *ngIf="Completedtaskshow" class='content-table rounded shadow-lg bg-light text-dark border' style='width: 400px;'>
+        <thead class='border'>
+          <tr>
+            <th class='p-2 text-center' style='width: 150px;'>Title</th>
+            <th class='p-2 text-center' style='width: 150px;'>Due Date</th>
+            <th class='p-2 text-center' style='width: 150px;'>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(task of CompletedTasks;track task.id){
+            <tr class='text-center'>
+        <td class='p-3'>{{task.title}}</td>
+        <td class='p-3'>{{task.dueDate}}</td>
+        <td class='p-3'>{{task.status}}  </td>
+
+        
+      </tr>
+    }@empty{
+      No tasks
+    }
+        </tbody>
+      </table>
+      
+   </div>
+  </div>
+  
+</div>

@@ -1,0 +1,54 @@
+{
+  "Users": [
+    {
+      "id": 1,
+      "username": "JohnDoe",
+      "email": "johndoe@example.com",
+      "number": "1234567890",
+      "image": "https://example.com/avatar.jpg",
+      "birthdate": "1990-01-01",
+      "country": "USA"
+    },
+    {
+      "id": 2,
+      "username": "JohnDoe",
+      "email": "johndoe@example.com",
+      "number": "1234567890",
+      "image": "https://example.com/avatar.jpg",
+      "birthdate": "1990-01-01",
+      "country": "USA"
+    },
+    {
+      "id": "ded6",
+      "email": "jasimaboobacker123@gmail.com",
+      "password": "111111",
+      "username": "ja.xxm_"
+    }
+  ],
+  "Tasks": [
+    {
+      "id": "0a32",
+      "title": "task name",
+      "description": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "dueDate": "2024-04-26",
+      "priority": "medium",
+      "status": "pending"
+    },
+    {
+      "id": "1fbb",
+      "title": "ww",
+      "description": "wwws",
+      "dueDate": "2024-04-19",
+      "priority": "medium",
+      "status": "pending"
+    },
+    {
+      "id": "6aa4",
+      "title": "dwdwdwd",
+      "description": "wdwdwdwdws",
+      "dueDate": "2024-05-12",
+      "priority": "high",
+      "status": "completed"
+    }
+  ]
+}

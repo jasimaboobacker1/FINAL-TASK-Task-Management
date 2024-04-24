@@ -1,0 +1,25 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="left"></div>
+    <div class="wrapper">
+      <div class="title"><span>Log in</span></div>
+      <form (ngSubmit)="Login()" [formGroup]="form">
+        <div class="row">
+          <input type="text" name="username" id="username" formControlName="username" required placeholder="Username">
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('username')?.invalid && (form.get('username')?.dirty || form.get('username')?.touched)" class="inv">username is required</div>
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('username')?.errors?.['username']" class="inv">Please enter a valid email address</div>
+        </div>
+        <div class="row">
+          <input type="password" name="password" formControlName="password" required placeholder="Password">
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)" class="inv">Password is required</div>
+          <div style="color: red;margin:5px;font-size: 14px;" *ngIf="form.get('password')?.errors?.['minlength']" class="inv">Password must be at least 6 characters</div>
+        </div>
+        
+        <div class="row button">
+          <button class="button" type="submit">Login</button>
+        </div>
+        <div class="signup-link"> Not a member? <a (click)="Sign()">signUp now</a></div>
+      </form>
+    </div>
+  </div>
+  
