@@ -19,6 +19,10 @@ export class ApiService {
   Getalltasks(){
     return this.http.get(this.taskapiurl)
   }
+
+  Gettasks(id:number){
+    return this.http.get(`${this.taskapiurl}/${id}`)
+  }
   
 
   // signup
@@ -26,9 +30,16 @@ export class ApiService {
     return this.http.post(this.userapiurl, userDetails);     
   }
 
+
+
   // Addtask
   AddTask(Taskdetails:any){
     return this.http.post(this.taskapiurl,Taskdetails)
+  }
+  
+  // Delete Task
+  DeleteTask(id:number){
+    return this.http.delete(`${this.taskapiurl}/${id}`)
   }
 
   // edit task

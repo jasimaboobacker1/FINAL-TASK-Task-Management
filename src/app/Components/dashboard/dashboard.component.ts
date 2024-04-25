@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TasksService } from '../../Services/tasks.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -7,6 +6,7 @@ import { NavComponent } from '../nav/nav.component';
 import { tasks } from '../../Interfaces/interfaces';
 import { Chart, registerables } from 'chart.js';
 import { ApiService } from '../../Services/api.service';
+import Swal from 'sweetalert2';
 
 Chart.register(...registerables);
 
@@ -53,6 +53,10 @@ export class DashboardComponent implements OnInit{
     this.Alltask();    
   }
 
+  view(taskId:any){
+    this.router.navigateByUrl(`viewtask/${taskId}`)
+  }
+
   // getting all tasks
   Alltask() {
     this.taskService.Getalltasks().subscribe((res) => {
@@ -85,13 +89,30 @@ export class DashboardComponent implements OnInit{
     this.Alltaskshow=false;
   }
 
+  deleteTask(taskId:number){
+    this.taskService.DeleteTask(taskId).subscribe((res)=>{
+      console.log(res);
+      this.Alltask();
+      Swal.fire({
+        icon: 'success',
+        title: 'Deleted successfully',
+        showConfirmButton: false,
+        timer: 1500
+    });   
+    })
+  }
+  trackById(index: number, item: any) {
+    return item.id; 
+  }
   
-  // updateStatus(task_id:any) {    
-  //   this.taskService.EditStatus(task_id).subscribe((res)=>{
-  //     console.log(res)
-  //   })
-  //   // task.status = task.status === 'completed' ? 'pending' : 'completed';
-  // }
+
+  
+  updateStatus(task_id:any) {    
+    // this.taskService.EditStatus(task_id).subscribe((res)=>{
+    //   console.log(res)
+    // })
+    // task.status = task.status === 'completed' ? 'pending' : 'completed';
+  }
   
   
   // navigating to task create page

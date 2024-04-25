@@ -6,6 +6,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { CreattaskComponent } from './Components/creattask/creattask.component';
 import { authGuard } from './Guards/auth.guard';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
+import { EdittaskComponent } from './Components/edittask/edittask.component';
+import { TaskviewComponent } from './Components/taskview/taskview.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +31,14 @@ export const routes: Routes = [
         path:'dashboard',
         component:DashboardComponent,
         canActivate:[authGuard]
+    },
+    {
+        path:'edittask',
+        component:EdittaskComponent
+    },
+    {
+        path:'viewtask/:id',
+        component:TaskviewComponent
     },
     {
         path:'createtask',

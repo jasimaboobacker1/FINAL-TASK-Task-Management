@@ -22,33 +22,35 @@
       </div>
     </div>
     <!-- All Task display -->
-      <table *ngIf="Alltaskshow" class='content-table rounded shadow-lg bg-light text-dark border' style='width: 400px;'>
-        <thead class='border'>
-          <tr>
-            <th class='p-2 text-center' style='width: 150px;'>Title</th>
-            <th class='p-2 text-center' style='width: 150px;'>Due Date</th>
-            <th class='p-2 text-center' style='width: 150px;'>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for(task of tasksDetails;track task.id){
-                <tr class='text-center'>
-            <td class='p-3'>{{task.title}}</td>
-            <td class='p-3'>{{task.dueDate}}</td>
-            <!-- <td class='p-3'>{{task.status}}  <input type="checkbox" [(ngModel)]="task.status" (change)="updateStatus(task)"></td> -->
-          </tr>
-        }@empty{
-          No tasks...! Add
-        }
-        </tbody>
-      </table>
+     <table *ngIf="Alltaskshow" class="content-table rounded shadow-lg bg-light text-dark border" style="width: 700px;">
+  <thead class="border">
+    <tr>
+      <th class="p-2 text-center" style="width: 150px;">Title</th>
+      <th class="p-2 text-center" style="width: 150px;">Due Date</th>
+      <th class="p-2 text-center" style="width: 150px;">Status</th>
+      <th class="p-2 text-center" style="width: 150px;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasksDetails; trackBy: trackById" class="text-center">
+      <td class="p-3">{{ task.title }}</td>
+      <td class="p-3">{{ task.dueDate }}</td>
+      <td class="p-3">{{ task.status }} <input type="checkbox" [(ngModel)]="task.status" (change)="updateStatus(task)"></td>
+      <td class="p-3"><button class="btn" (click)="view(task.id)">View Details</button><i (click)="deleteTask(task.id)" class="fa-solid fa-trash" style="color: #ff0505;"></i></td>
+    </tr>
+    <tr *ngIf="tasksDetails.length === 0" class="text-center">
+      <td colspan="4" class="p-3">No tasks...! Add</td>
+    </tr>
+  </tbody>
+</table>
+
        <!-- pedding task table -->
       <table *ngIf="Pendingtaskshow" class='content-table rounded shadow-lg bg-light text-dark border' style='width: 400px;'>
         <thead class='border'>
           <tr>
             <th class='p-2 text-center' style='width: 150px;'>Title</th>
             <th class='p-2 text-center' style='width: 150px;'>Due Date</th>
-            <th class='p-2 text-center' style='width: 150px;'>Status</th>
+            <th [style.width.px]="20" class="p-2 text-center">Status</th>
           </tr>
         </thead>
         <tbody>

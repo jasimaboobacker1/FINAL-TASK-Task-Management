@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
-import { TasksService } from '../../Services/tasks.service';
 import Swal from 'sweetalert2';
 import { tasks } from '../../Interfaces/interfaces';
 import { ApiService } from '../../Services/api.service';

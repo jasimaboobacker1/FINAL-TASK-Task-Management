@@ -8,19 +8,19 @@
     padding: 30px;
 }
 .left{
-    width:50%;
+    width:35%;
     height:100vh;
 }
 .tableeee{
 width: 100%;
-height: auto;
+max-height: auto;
 display: flex;
-align-items: center;
 justify-content: space-between;
 justify-content: center;
+
 }
 .filterr{
-    width: 35%;
+    width: 25%;
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -54,11 +54,20 @@ padding: 20px;
 
 }
 .right{
-    width:50%;
+    width:65%;
     height:100vh;
     padding: 30px;
     display: flex;
     flex-direction: column;
+}
+.btn{
+    width: auto;
+    padding: 6px;
+    border:none;
+    border-radius: 6px;
+    background-color: #009879;
+    color:white;
+    margin-right: 5px;
 }
 
 .content-table {
@@ -68,6 +77,7 @@ padding: 20px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    height: 0px;
 }
 
 .content-table thead tr {

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { UsersService } from '../../Services/users.service';
 import Swal from 'sweetalert2';
 import { NavComponent } from '../nav/nav.component';
 import { ApiService } from '../../Services/api.service';
