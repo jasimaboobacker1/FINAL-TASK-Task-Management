@@ -4,7 +4,7 @@
          <h1 style="font-size: 85px;margin-bottom: 15px;  font-family:Oswald, sans-serif;
          ">Manage Your Tasks.</h1>
          <p style="width: 889px;text-align: center;margin-bottom: 15px;">Organize and manage your team like a boss with TaskHub, task management software packing more capabilities than you can imagine.</p>
-         <button class="discover">Login</button>
+         <button *ngIf="loginshow" class="discover" (click)="LoginNavigate()">Login</button>
     </div>
 
     <div class="second-section">
