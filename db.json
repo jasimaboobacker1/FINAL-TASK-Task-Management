@@ -1,28 +1,16 @@
 {
   "Users": [
     {
-      "id": "1",
-      "username": "JohnDoe",
-      "email": "johndoe@example.com",
-      "number": "1234567890",
-      "image": "https://example.com/avatar.jpg",
-      "birthdate": "1990-01-01",
-      "country": "USA"
-    },
-    {
-      "id": "2",
-      "username": "JohnDoe",
-      "email": "johndoe@example.com",
-      "number": "1234567890",
-      "image": "https://example.com/avatar.jpg",
-      "birthdate": "1990-01-01",
-      "country": "USA"
-    },
-    {
-      "id": "ded6",
+      "id": "0c6a",
       "email": "jasimaboobacker123@gmail.com",
       "password": "111111",
       "username": "ja.xxm_"
+    },
+    {
+      "id": "ca78",
+      "email": "Rahul@gmail.com",
+      "password": "123456",
+      "username": "Rahul"
     }
   ],
   "Tasks": [
@@ -35,28 +23,12 @@
       "status": "pending"
     },
     {
-      "id": "7466",
-      "title": "Final Project",
-      "description": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-      "dueDate": "2024-05-12",
+      "id": "d166",
+      "title": "wqwq",
+      "description": "qwqw",
+      "dueDate": "2024-05-10",
       "priority": "medium",
-      "status": "pending"
-    },
-    {
-      "id": "986",
-      "title": "Final Project",
-      "description": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-      "dueDate": "2024-05-12",
-      "priority": "medium",
-      "status": "pending"
-    },
-    {
-      "id": "235",
-      "title": "Final Project",
-      "description": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-      "dueDate": "2024-05-12",
-      "priority": "medium",
-      "status": "pending"
+      "status": "completed"
     }
   ]
 }

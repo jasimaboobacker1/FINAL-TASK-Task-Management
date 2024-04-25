@@ -5,7 +5,6 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NavComponent } from '../nav/nav.component';
 import { ApiService } from '../../Services/api.service';
-import { error } from 'console';
 
 @Component({
   selector: 'app-signup',
@@ -39,6 +38,7 @@ export class SignupComponent implements OnInit{
       try{
         await this.userService.Signup(formValue).subscribe((res)=>{
           this.router.navigateByUrl('login');
+          sessionStorage.setItem('email',formValue.email)
           Swal.fire({
                     icon: 'success',
                     title: 'Signed up successfully',

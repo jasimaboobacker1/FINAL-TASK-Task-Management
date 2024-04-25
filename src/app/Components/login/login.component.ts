@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit{
         if (user) {
             const token = uuidv4();
             sessionStorage.setItem('token', token);
+            sessionStorage.setItem('username', formValue.username);
             this.router.navigateByUrl('dashboard');
             Swal.fire({
                 icon: 'success',

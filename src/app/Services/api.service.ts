@@ -15,11 +15,19 @@ export class ApiService {
   Getallusers(){
      return this.http.get(this.userapiurl)
   }
+
+  // GetUser
+  GetUser(email:any){
+  return this.http.get(`${this.userapiurl}/${email}`)
+  }
+
+
+
   // getting alltasks
   Getalltasks(){
     return this.http.get(this.taskapiurl)
   }
-
+  // getTask
   Gettasks(id:number){
     return this.http.get(`${this.taskapiurl}/${id}`)
   }

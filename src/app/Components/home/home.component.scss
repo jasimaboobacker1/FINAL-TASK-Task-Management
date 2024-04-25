@@ -135,3 +135,77 @@
     border: none;
     border-radius: 8px;
 }
+
+
+@media (max-width: 550px){
+    .second-section{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-around;
+    }
+    .second-section-image{
+       display: none;
+    }
+    .second-section-content{
+        max-width: 650px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    
+    }
+    .aboutus{
+        width: auto;
+        height: auto;
+        display: flex;
+       
+    }
+    .line1,.line2{
+        align-items: start;
+        height: 3px;
+        background-color: rgb(10, 175, 175);
+        margin: 3.5px;
+      
+        
+    }
+    
+    .line1{
+        width: 50px;
+    }
+    .line2{
+        width: 80px;
+    }
+    .linecont{
+        width: auto;
+        height: 30px;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 15px;
+        margin-bottom: 10px;
+    }
+    .specifications{
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        justify-content: space-between;
+    }
+    
+    .lists{
+        width: 300px;
+        height: auto;
+        padding: 35px;
+        line-height: 30px;
+        font-size: 20px;
+    }
+    .lists ul li i{
+        margin-right: 10px;
+        
+    }
+}
