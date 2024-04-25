@@ -8,6 +8,7 @@ import { authGuard } from './Guards/auth.guard';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
 import { EdittaskComponent } from './Components/edittask/edittask.component';
 import { TaskviewComponent } from './Components/taskview/taskview.component';
+import { UserprofileeditComponent } from './Components/userprofile/userprofileedit/userprofileedit.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,10 @@ export const routes: Routes = [
         canActivate:[authGuard]
     },
     {
+        path:'editprofile',
+        component:UserprofileeditComponent,
+    },
+    {
         path:'dashboard',
         component:DashboardComponent,
         canActivate:[authGuard]
@@ -43,6 +48,6 @@ export const routes: Routes = [
     {
         path:'createtask',
         component:CreattaskComponent,
-        canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
+        // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
     }
 ];

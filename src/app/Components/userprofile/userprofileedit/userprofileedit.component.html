@@ -1,1 +1,48 @@
-<p>userprofileedit works!</p>
+<app-nav></app-nav>
+<div class="container">
+    <div class="wrapper">
+      <div class="title"><span>Add Your Details</span></div>
+      <form (ngSubmit)="AddDetails()" [formGroup]="form">
+        <div class="row">
+            <input type="text" name="place" id="place" formControlName="place" required placeholder="Place">
+            <div *ngIf="formSubmitted && form.get('place')?.invalid" class="inv">Place is required</div>
+        </div>
+        <div class="row">
+            <input type="text" name="designation" id="designation" formControlName="designation" required placeholder="designation">
+            <div *ngIf="formSubmitted && form.get('designation')?.invalid" class="inv">designation is required</div>
+        </div>
+        <div class="row">
+            <input type="date" name="birthdate" id="birthdate" formControlName="birthdate" required placeholder="Select your birthdate">
+            <div *ngIf="formSubmitted && form.get('birthdate')?.invalid" class="inv">birthdate is required</div>
+          </div>
+          
+        <div class="row">
+            <input type="text" name="country" id="country" formControlName="country" required placeholder="country">
+            <div *ngIf="formSubmitted && form.get('country')?.invalid" class="inv">country is required</div>
+        </div>
+        <div class="row">
+            <input type="text" name="facebook" id="facebook" formControlName="facebook" placeholder="Facebook URL">
+            <div *ngIf="formSubmitted && form.get('facebook')?.invalid" class="inv">Facebook link is required</div>
+          </div>
+          <div class="row">
+            <input type="text" name="instagram" id="instagram" formControlName="instagram" placeholder="Instagram URL">
+            <div *ngIf="formSubmitted && form.get('instagram')?.invalid" class="inv">Instagram link is required</div>
+          </div>
+          <div class="row">
+            <input type="text" name="linkedIn" id="linkedIn" formControlName="linkedIn" placeholder="LinkedIn URL">
+            <div *ngIf="formSubmitted && form.get('linkedIn')?.invalid" class="inv">LinkedIn link is required</div>
+          </div>
+          
+          
+        <div class="req">
+            <div class="row button">
+              <button class="button" type="submit">Add</button>
+            </div>
+            <!-- <div class="row button">
+                <button class="button" type="button" (click)="navigatetodashboard()">Cancel</button>
+              </div> -->
+        </div>
+      </form>
+    </div>
+    </div>
+

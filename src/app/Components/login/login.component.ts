@@ -6,8 +6,8 @@ import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
 import { NavComponent } from '../nav/nav.component';
 import { ApiService } from '../../Services/api.service';
-import { resolve } from 'path';
 import { Users } from '../../Interfaces/interfaces';
+
 
 @Component({
   selector: 'app-login',

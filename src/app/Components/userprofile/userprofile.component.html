@@ -1,20 +1,24 @@
 <app-nav></app-nav>
 <div class="container">
     <div class="card-container">
-        <span class="pro">Edit</span>
+        <span class="pro" (click)="Edit()">Edit</span>
         <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
         <h3>{{User.username}}</h3>
-        <h6>Place</h6>
-        <p> Designation</p>
-        <p> Your Birthdate</p>
-        <p> Your country</p>
+        <h6>{{ User.place || 'Add Place' }}</h6>
+        <p>{{ User.designation || 'Add Designation ' }}</p>
+        <p>{{ User.birthdate || 'Add Birthdate' }}</p>
+        <p>{{ User.country || 'Add Country ' }}</p>
+        
         <div class="skills">
-            <button class="backbtn">Back</button>
+          <div>  <button (click)="Pro()" class="backbtn">Back</button>
+            <button (click)="Pro()" class="backbtn">Change your Password</button>
+        </div>
             <ul>
-                <li><a>Facebook</a></li>
-                <li><a>Instagram</a></li>
-                <li><a>LinkedIn</a></li>
-            </ul>
+                <li><a style="text-decoration: none;color: black;" href="{{ User.facebook }}" target="_blank">Facebook</a></li>
+                <li><a style="text-decoration: none;color: black;" href="{{ User.instagram }}" target="_blank">Instagram</a></li>
+                <li><a style="text-decoration: none;color: black;" href="{{ User.linkedIn }}" target="_blank">LinkedIn</a></li>
+              </ul>
+              
         </div>
     </div>
 </div>

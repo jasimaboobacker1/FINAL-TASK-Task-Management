@@ -38,6 +38,12 @@ export class ApiService {
     return this.http.post(this.userapiurl, userDetails);     
   }
 
+  // AddUserDetails
+  UpdateUserDetails(userToUpdate: any) {
+    const url = `${this.userapiurl}/${userToUpdate.id}`; 
+    return this.http.put(url, userToUpdate);
+  }
+
 
 
   // Addtask

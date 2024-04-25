@@ -4,13 +4,27 @@
       "id": "0c6a",
       "email": "jasimaboobacker123@gmail.com",
       "password": "111111",
-      "username": "ja.xxm_"
+      "username": "ja.xxm_",
+      "place": "Kozhikode",
+      "designation": "Angular Developer",
+      "birthdate": "2024-04-05",
+      "country": "India",
+      "facebook": "https://www.facebook.com/TheDummyPage/",
+      "instagram": "https://www.instagram.com/?hl=en",
+      "linkedIn": "https://www.linkedin.com/in/jasim-aboobacker-3353b1212/"
     },
     {
       "id": "ca78",
       "email": "Rahul@gmail.com",
       "password": "123456",
-      "username": "Rahul"
+      "username": "Rahul",
+      "place": "Kollam",
+      "designation": "Angular Developer",
+      "birthdate": "2024-04-09",
+      "country": "India",
+      "facebook": "kdasalsalsals",
+      "instagram": "malsalsals",
+      "linkedIn": "malsalsals"
     }
   ],
   "Tasks": [
@@ -21,14 +35,6 @@
       "dueDate": "2024-05-12",
       "priority": "medium",
       "status": "pending"
-    },
-    {
-      "id": "d166",
-      "title": "wqwq",
-      "description": "qwqw",
-      "dueDate": "2024-05-10",
-      "priority": "medium",
-      "status": "completed"
     }
   ]
 }

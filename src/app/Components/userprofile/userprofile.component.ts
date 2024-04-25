@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { ApiService } from '../../Services/api.service';
 
@@ -16,7 +16,13 @@ export class UserprofileComponent implements OnInit{
   Users:any;
   UserName:any;
 
-  constructor(private service:ApiService,private router:ActivatedRoute){}
+  constructor(private service:ApiService,private router:ActivatedRoute,private roterr:Router){}
+
+  Edit(){
+    this.roterr.navigateByUrl('editprofile')
+  }
+
+
   ngOnInit(): void {
     this.UserName = sessionStorage.getItem('username');
     this.service.Getallusers().subscribe(
@@ -32,6 +38,10 @@ export class UserprofileComponent implements OnInit{
         console.error('Error fetching user data:', error);
       }
     );
+  }
+
+  Pro(){
+    this.roterr.navigateByUrl('dashboard')
   }
   
 }
