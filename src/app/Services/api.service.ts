@@ -43,6 +43,14 @@ export class ApiService {
     const url = `${this.userapiurl}/${userToUpdate.id}`; 
     return this.http.put(url, userToUpdate);
   }
+  // changepassword
+// Service method to change password
+ChangePassword(user: any) {
+  return this.http.put(`${this.userapiurl}/${user.id}`, user);
+}
+
+
+  
 
 
 

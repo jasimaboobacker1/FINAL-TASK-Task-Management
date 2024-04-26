@@ -1,0 +1,26 @@
+<app-nav></app-nav>
+<div class="container">
+    <div class="wrapper">
+      <div class="title"><span>Change Your Password</span></div>
+      <form (ngSubmit)="Changepass()" [formGroup]="form"
+      >
+        <div class="row">
+            <input type="text" name="password" id="password" formControlName="password" required placeholder="Old Password">
+            <div *ngIf="formSubmitted && form.get('password')?.invalid" class="inv">Old password is required</div>
+        </div>
+        <div class="row">
+            <input type="text" name="newpassword" id="newpassword" formControlName="newpassword" required placeholder="newpassword">
+            <div *ngIf="formSubmitted && form.get('newpassword')?.invalid" class="inv">newpassword is required</div>
+        </div>
+        <div class="req">
+            <div class="row button">
+              <button class="buttonnn" type="submit">Add</button>
+            </div>
+            <div class="row button">
+                <button class="buttonnn" type="button" (click)="navigatetoprofile()">Cancel</button>
+              </div>
+        </div>
+      </form>
+    </div>
+    </div>
+

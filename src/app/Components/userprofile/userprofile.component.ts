@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { ApiService } from '../../Services/api.service';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-userprofile',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,NavComponent],
+  imports: [RouterOutlet,RouterLink,NavComponent,DialogModule,ButtonModule],
   templateUrl: './userprofile.component.html',
   styleUrl: './userprofile.component.scss'
 })
@@ -15,7 +17,7 @@ export class UserprofileComponent implements OnInit{
    User:any;
   Users:any;
   UserName:any;
-
+  // visible: boolean = false;
   constructor(private service:ApiService,private router:ActivatedRoute,private roterr:Router){}
 
   Edit(){
@@ -43,5 +45,12 @@ export class UserprofileComponent implements OnInit{
   Pro(){
     this.roterr.navigateByUrl('dashboard')
   }
+  change(){
+    this.roterr.navigateByUrl('changepassword')
+  }
+  // showDialog() {
+  //   this.visible = true;
+  // }
+  
   
 }

@@ -9,6 +9,7 @@ import { UserprofileComponent } from './Components/userprofile/userprofile.compo
 import { EdittaskComponent } from './Components/edittask/edittask.component';
 import { TaskviewComponent } from './Components/taskview/taskview.component';
 import { UserprofileeditComponent } from './Components/userprofile/userprofileedit/userprofileedit.component';
+import { PasschangeComponent } from './Components/passchange/passchange.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path:'editprofile',
         component:UserprofileeditComponent,
+    },
+    {
+        path:'changepassword',
+        component:PasschangeComponent,
     },
     {
         path:'dashboard',
