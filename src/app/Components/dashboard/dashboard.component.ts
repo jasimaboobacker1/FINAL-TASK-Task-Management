@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit{
   CompletedTasks: tasks[] = [];
   tasksDetails:any;
 
-  public Alltaskshow=true;
-  public Pendingtaskshow=false;
+  public Alltaskshow=false;
+  public Pendingtaskshow=true;
   public Completedtaskshow=false;
  
   constructor(private taskService: ApiService, private router: Router) { }
@@ -50,7 +50,9 @@ export class DashboardComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.Alltask();    
+    this.Alltask();
+    console.log(this.tasksDetails);
+        
   }
 
   view(taskId:any){
@@ -60,7 +62,8 @@ export class DashboardComponent implements OnInit{
   // getting all tasks
   Alltask() {
     this.taskService.Getalltasks().subscribe((res) => {
-      this.tasksDetails = res;
+      console.log(res);
+      this.tasksDetails =res;
     });
     this.Alltaskshow=true;
     this.Pendingtaskshow=false;
@@ -118,5 +121,10 @@ export class DashboardComponent implements OnInit{
   // navigating to task create page
   Addnavigate() {
     this.router.navigateByUrl('createtask');
+  }
+
+  viewnavigte(){
+    this.router.navigateByUrl('viewtask')
+
   }
 }

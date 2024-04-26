@@ -1,10 +1,6 @@
 {
   "Users": [
     {
-      "password": "12345678",
-      "id": "0c6a"
-    },
-    {
       "id": "ca78",
       "email": "Rahul@gmail.com",
       "password": "123456",
@@ -16,10 +12,6 @@
       "facebook": "kdasalsalsals",
       "instagram": "malsalsals",
       "linkedIn": "malsalsals"
-    },
-    {
-      "password": "12345678",
-      "id": "2b5a"
     },
     {
       "id": "671c",
@@ -37,9 +29,9 @@
   ],
   "Tasks": [
     {
-      "id": "8014",
-      "title": "Final Project",
-      "description": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "id": "c001",
+      "title": "3rerer",
+      "description": "erererer",
       "dueDate": "2024-05-12",
       "priority": "medium",
       "status": "pending"
