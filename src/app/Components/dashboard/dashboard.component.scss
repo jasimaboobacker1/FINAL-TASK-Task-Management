@@ -24,15 +24,27 @@
 }
 .buttons{
     width: 25%;
-    height: 218px;
+    height: 550px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     padding: 20px;
     justify-content: center;
+    justify-content: space-between;
     border-radius:6px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.btnssssss{
+    width:100%;
+    height:200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius:7px;
 }
 .table{
     width: 75%;
