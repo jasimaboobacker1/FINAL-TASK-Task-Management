@@ -11,7 +11,7 @@ export interface Users {
 
 
 export interface tasks {
-    id: number;
+    id: any;
     title: string;
     description: string;
     dueDate: string;

@@ -97,5 +97,23 @@ export class PasschangeComponent implements OnInit{
     this.roterr.navigateByUrl('profile')
   }
 
+  canExit(): Promise<boolean> {
+    if (this.form.dirty) {
+      return Swal.fire({
+        title: "Are you sure?",
+        text: "You have unsaved changes. Do you want to navigate away?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "black",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, navigate away!"
+      }).then((result) => {
+        return result.isConfirmed;
+      });
+    } else {
+      return Promise.resolve(true);
+    }
+  }
+
 
 }

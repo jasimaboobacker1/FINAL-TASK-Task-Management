@@ -19,6 +19,13 @@ export class CreattaskComponent implements OnInit{
 
   formSubmitted = false;
   form!: FormGroup;
+  User:any;
+  Users:any;
+  UserName:any;
+  UserId:any;
+
+
+
   pieChartLabels: string[] = ['Low', 'Medium', 'High'];
   pieChartData: number[] = [0, 0, 0];
   pieChartType: string = 'pie';
@@ -37,54 +44,56 @@ export class CreattaskComponent implements OnInit{
       status: ['', [Validators.required]],
     });
 
-    this.service.Getalltasks().subscribe((res) => {
-      this.tasksDetails = res;
-    });
-  }
-
- async Addtaskk(){
-    if(this.form.valid){
-      const formValue=this.form.value;
-      try{
-        await this.service.AddTask(formValue).subscribe((res)=>{
-          this.router.navigateByUrl('dashboard')
-          Swal.fire({
-                    icon: 'success',
-                    title: 'Task Added successfully',
-                    showConfirmButton: false,
-                    timer: 1500 
-                  });
-        })
-      }catch(error){
-        console.error('Error signing up:',error)        
-      }
-    }else{
-          this.formSubmitted=true;
-          this.form.markAllAsTouched();
+    this.UserName = sessionStorage.getItem('username');
+    this.service.Getallusers().subscribe(
+      (res) => {
+        try {
+          this.Users = res;         
+          this.User = this.Users.find((user: any) => user.username === this.UserName);
+         
+        } catch (error) {
+          console.error('Error fetching user data:', error);
         }
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
   }
 
-  // async Addtaskk() {
-  //   if(this.form.valid){
-  //     const formvalue=this.form.value;
-  //     try{
-  //       await this.service.Add(formvalue);
-  //       this.router.navigateByUrl('dashboard')
-  //       Swal.fire({
-  //         icon: 'success',
-  //         title: 'Task Added successfully',
-  //         showConfirmButton: false,
-  //         timer: 1500 
-  //       });
-  //     } catch (error) {
-  //       console.error('Error signing up:',error)
-  //     }
-  //   }else{
-  //     this.formSubmitted=true;
-  //     this.form.markAllAsTouched();
-  //   }
-
+  async Addtaskk(){
+    if(this.form.valid){
+      const formValue = this.form.value;
+      const userName = sessionStorage.getItem('username');
+      if(userName){
+        formValue.username = userName;
+        try{
+          await this.service.AddTask(formValue).subscribe((res)=>{
+            this.router.navigateByUrl('dashboard')
+            Swal.fire({
+              icon: 'success',
+              title: 'Task Added successfully',
+              showConfirmButton: false,
+              timer: 1500 
+            });
+          })
+        } catch(error){
+          console.error('Error adding task:', error);        
+        }
+      } else {
+        console.error('User email not found in session storage');
+      }
+    } else {
+      this.formSubmitted = true;
+      this.form.markAllAsTouched();
+    }
+  }
+  
+  
+  // generateTaskId(): number {
+  //   return Math.floor(Math.random() * 1000) + 1;
   // }
+  
 
   
   canExit(): Promise<boolean> {
@@ -106,9 +115,4 @@ export class CreattaskComponent implements OnInit{
   }
   
   
-
-  
-
-  
-
 }

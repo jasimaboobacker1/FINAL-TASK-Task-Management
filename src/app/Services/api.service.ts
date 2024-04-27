@@ -21,18 +21,15 @@ export class ApiService {
   return this.http.get(`${this.userapiurl}/${email}`)
   }
 
-
-
   // getting alltasks
   Getalltasks(){
     return this.http.get(this.taskapiurl)
   }
   // getTask
-  Gettasks(id:number){
-    return this.http.get(`${this.taskapiurl}/${id}`)
+  GetTask(id: number) {
+    return this.http.get(`${this.taskapiurl}/${id}`);
   }
   
-
   // signup
   Signup(userDetails: any) {
     return this.http.post(this.userapiurl, userDetails);     
@@ -43,14 +40,20 @@ export class ApiService {
     const url = `${this.userapiurl}/${userToUpdate.id}`; 
     return this.http.put(url, userToUpdate);
   }
-  // changepassword
-// Service method to change password
-ChangePassword(user: any) {
-  return this.http.put(`${this.userapiurl}/${user.id}`, user);
-}
 
-
+  // UpdateStatus
+  UpdateStatus(Task: any) {
+    console.log(Task.id);
+    const url = `${this.taskapiurl}/${Task.id}`;
+    Task.status = 'completed'; 
+    return this.http.put(url, Task);
+  }
   
+
+  // changepassword
+  ChangePassword(user: any) {
+    return this.http.put(`${this.userapiurl}/${user.id}`, user);
+  }
 
 
 

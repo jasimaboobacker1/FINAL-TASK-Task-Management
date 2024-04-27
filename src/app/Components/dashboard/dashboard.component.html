@@ -36,16 +36,20 @@
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
-                      <tr *ngFor="let task of tasksDetails; trackBy: trackById">
+                      <tr *ngFor="let task of Usertasks; trackBy: trackById">
                           <th>{{ task.title }}</th>
                       <th>{{ task.dueDate }}</th>
-                      <th>{{ task.status }}</th>
-                        <td>
-                          <a class="btn  btn-action mr-1" style="background-color: #16a085;color:white;"  data-toggle="tooltip" title="" data-original-title="Edit" (click)="viewnavigte()">View Task</a>
+                      <ng-container *ngIf="task.status === 'pending'">
+                        <th>{{ task.status }} <input type="checkbox" name="" id="" (click)="updateStatus(task)"></th>
+                    </ng-container>
+                    <ng-container *ngIf="task.status !== 'pending'">
+                        <th style="color: green;">{{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i></th>
+                    </ng-container>                        <td>
+                          <a class="btn  btn-action mr-1" style="background-color: #16a085;color:white;"  data-toggle="tooltip" title="" data-original-title="Edit" (click)="viewnavigte(task.id)">View Task</a>
                           <a class="btn btn-danger btn-action" style="margin-left: 7px;" data-toggle="tooltip" title=""   (click)="deleteTask(task.id)"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
-                      <tr *ngIf="tasksDetails.length === 0" class="text-center">
+                      <tr *ngIf="Usertasks.length === 0" class="text-center">
                         <td colspan="4" class="p-3">No tasks...! Add Yours</td>
                       </tr>
                       <tr>
@@ -73,17 +77,22 @@
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
-                          <tr *ngFor="let task of pendingTasks; trackBy: trackById">
+                          <tr *ngFor="let task of pendingUserTasks; trackBy: trackById">
                               <th>{{ task.title }}</th>
                           <th>{{ task.dueDate }}</th>
-                          <th>{{ task.status }}</th>
+                          <ng-container *ngIf="task.status === 'pending'">
+                            <th>{{ task.status }} <input type="checkbox" name="" id="" (click)="updateStatus(task)"></th>
+                        </ng-container>
+                        <ng-container *ngIf="task.status !== 'pending'">
+                            <th style="color: green;">{{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i></th>
+                        </ng-container>         
                             <td>
                               <a class="btn  btn-action mr-1" style="background-color: #16a085;color:white;"  data-toggle="tooltip" title="" data-original-title="Edit">View Task</a>
                               <a class="btn btn-danger btn-action" style="margin-left: 7px;" data-toggle="tooltip" title=""   (click)="deleteTask(task.id)"><i class="fas fa-trash"></i></a>
                             </td>
                           </tr>
-                          <tr *ngIf="tasksDetails.length === 0" class="text-center">
-                            <td colspan="4" class="p-3">No tasks...! Add Yours</td>
+                          <tr *ngIf="pendingUserTasks.length === 0" class="text-center">
+                            <td colspan="4" class="p-3">No Pending tasks...!</td>
                           </tr>
                       </tbody></table> 
                     </div>
@@ -110,7 +119,7 @@
                                 <th>Status</th>
                                 <th>Action</th>
                               </tr>
-                              <tr *ngFor="let task of CompletedTasks; trackBy: trackById">
+                              <tr *ngFor="let task of CompletedUserTasks; trackBy: trackById">
                                   <th>{{ task.title }}</th>
                               <th>{{ task.dueDate }}</th>
                               <th>{{ task.status }}</th>
@@ -119,8 +128,8 @@
                                   <a class="btn btn-danger btn-action" style="margin-left: 7px;" data-toggle="tooltip" title=""   (click)="deleteTask(task.id)"><i class="fas fa-trash"></i></a>
                                 </td>
                               </tr>
-                              <tr *ngIf="tasksDetails.length === 0" class="text-center">
-                                <td colspan="4" class="p-3">No tasks...! Add Yours</td>
+                              <tr *ngIf="CompletedUserTasks.length === 0" class="text-center">
+                                <td colspan="4" class="p-3">No Completed tasks...!</td>
                               </tr>
                           </tbody></table> 
                         </div>

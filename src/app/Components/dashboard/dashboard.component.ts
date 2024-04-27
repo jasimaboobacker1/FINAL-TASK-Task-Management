@@ -20,38 +20,24 @@ Chart.register(...registerables);
 export class DashboardComponent implements OnInit{
 
   tasks:any;
-  pendingTasks: tasks[] = [];
-  CompletedTasks: tasks[] = [];
+  pendingUserTasks: tasks[] = [];
+  CompletedUserTasks: tasks[] = [];
   tasksDetails:any;
+  Usertasks:any;
+  
 
-  public Alltaskshow=false;
-  public Pendingtaskshow=true;
+  public Alltaskshow=true;
+  public Pendingtaskshow=false;
   public Completedtaskshow=false;
  
   constructor(private taskService: ApiService, private router: Router) { }
 
-  Renderchart(){
-    const config = {
-      type: 'pie',
-      data: this.tasks,
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Chart.js Pie Chart'
-          }
-        }
-      },
-    };
-  }
+  
 
   ngOnInit(): void {
     this.Alltask();
-    console.log(this.tasksDetails);
+    // this.Pending();
+    // this.Completed();
         
   }
 
@@ -63,18 +49,23 @@ export class DashboardComponent implements OnInit{
   Alltask() {
     this.taskService.Getalltasks().subscribe((res) => {
       console.log(res);
-      this.tasksDetails =res;
+      this.tasksDetails = res;
+      const UserName = sessionStorage.getItem('username');
+      this.Usertasks = this.tasksDetails.filter((task: any) => task.username === UserName);
     });
-    this.Alltaskshow=true;
-    this.Pendingtaskshow=false;
-    this.Completedtaskshow=false;
+    this.Alltaskshow = true;
+    this.Pendingtaskshow = false;
+    this.Completedtaskshow = false;
   }
-   
+  
   // getting pending task
   Pending() {
     this.taskService.Getalltasks().subscribe((res) => {
       this.tasksDetails = res;
-      this.pendingTasks = this.tasksDetails.filter((task: tasks) => task.status === 'pending');
+      const UserName = sessionStorage.getItem('username');
+      this.pendingUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "pending");
+      console.log(this.pendingUserTasks);
+      
     });
     this.Pendingtaskshow=true;
     this.Alltaskshow=false;
@@ -85,7 +76,8 @@ export class DashboardComponent implements OnInit{
   Completed(){
     this.taskService.Getalltasks().subscribe((res) => {
       this.tasksDetails = res;
-      this.CompletedTasks = this.tasksDetails.filter((task: tasks) => task.status === 'completed');
+      const UserName = sessionStorage.getItem('username');
+      this.CompletedUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "completed");
     }); 
     this.Completedtaskshow=true;
     this.Pendingtaskshow=false;
@@ -110,12 +102,25 @@ export class DashboardComponent implements OnInit{
   
 
   
-  updateStatus(task_id:any) {    
-    // this.taskService.EditStatus(task_id).subscribe((res)=>{
-    //   console.log(res)
-    // })
-    // task.status = task.status === 'completed' ? 'pending' : 'completed';
+  async updateStatus(task: any) {
+    try {
+      const updatedTask = { ...task, status: 'completed' }; 
+      await this.taskService.UpdateStatus(updatedTask).subscribe((res) => {
+        this.Alltask();
+        Swal.fire({
+          icon: 'success',
+          title: 'Updated',
+          showConfirmButton: false,
+          timer: 700 
+        });
+      }, (error) => {
+      });
+    } catch (error) {
+      console.error('Error updating task status:', error);
+    }
   }
+  
+  
   
   
   // navigating to task create page
@@ -123,8 +128,8 @@ export class DashboardComponent implements OnInit{
     this.router.navigateByUrl('createtask');
   }
 
-  viewnavigte(){
-    this.router.navigateByUrl('viewtask')
+  viewnavigte(id:any){
+    this.router.navigateByUrl(`viewtask/${id}`)
 
   }
 }

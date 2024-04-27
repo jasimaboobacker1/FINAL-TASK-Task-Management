@@ -11,16 +11,31 @@
       "country": "India",
       "facebook": "kdasalsalsals",
       "instagram": "malsalsals",
-      "linkedIn": "malsalsals"
+      "linkedIn": "malsalsals",
+      "tasks": []
     },
     {
       "id": "671c",
       "email": "jasimaboobacker123@gmail.com",
-      "password": "12345678",
+      "password": "111111",
       "username": "ja.xxm_",
       "place": "Kozhikode",
       "designation": "Angular Developer",
       "birthdate": "2024-04-10",
+      "country": "India",
+      "facebook": "https://www.facebook.com/TheDummyPage/",
+      "instagram": "https://www.instagram.com/?hl=en",
+      "linkedIn": "https://www.linkedin.com/in/jasim-aboobacker-3353b1212/",
+      "tasks": []
+    },
+    {
+      "id": "d566",
+      "email": "aman123@gmail.com",
+      "password": "1234567",
+      "username": "aman",
+      "place": "Kollammmmmmm",
+      "designation": "Angular Developer",
+      "birthdate": "2024-05-04",
       "country": "India",
       "facebook": "https://www.facebook.com/TheDummyPage/",
       "instagram": "https://www.instagram.com/?hl=en",
@@ -29,12 +44,22 @@
   ],
   "Tasks": [
     {
-      "id": "c001",
-      "title": "3rerer",
-      "description": "erererer",
+      "id": "e097",
+      "title": "Do Assignment",
+      "description": "wwwwwwwwwwwwwwwwwwww",
+      "dueDate": "2024-04-28",
+      "priority": "low",
+      "status": "completed",
+      "username": "ja.xxm_"
+    },
+    {
+      "id": "f1c5",
+      "title": "qssa",
+      "description": "asasas",
       "dueDate": "2024-05-12",
       "priority": "medium",
-      "status": "pending"
+      "status": "completed",
+      "username": "ja.xxm_"
     }
   ]
 }

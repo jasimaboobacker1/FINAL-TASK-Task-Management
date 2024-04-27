@@ -5,11 +5,11 @@
       <form (ngSubmit)="Changepass()" [formGroup]="form"
       >
         <div class="row">
-            <input type="text" name="password" id="password" formControlName="password" required placeholder="Old Password">
+            <input type="password" name="password" id="password" formControlName="password" required placeholder="Old Password">
             <div *ngIf="formSubmitted && form.get('password')?.invalid" class="inv">Old password is required</div>
         </div>
         <div class="row">
-            <input type="text" name="newpassword" id="newpassword" formControlName="newpassword" required placeholder="newpassword">
+            <input type="password" name="newpassword" id="newpassword" formControlName="newpassword" required placeholder="newpassword">
             <div *ngIf="formSubmitted && form.get('newpassword')?.invalid" class="inv">newpassword is required</div>
         </div>
         <div class="req">

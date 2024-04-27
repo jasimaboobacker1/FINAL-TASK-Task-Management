@@ -36,6 +36,8 @@ export const routes: Routes = [
     {
         path:'changepassword',
         component:PasschangeComponent,
+        // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
+
     },
     {
         path:'dashboard',

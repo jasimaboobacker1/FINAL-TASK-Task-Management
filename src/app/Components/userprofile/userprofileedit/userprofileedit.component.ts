@@ -21,7 +21,7 @@ export class UserprofileeditComponent implements OnInit{
   formSubmitted = false;
   form!: FormGroup;
 
-  constructor(private service: ApiService, private router: ActivatedRoute, private roterr: Router, private fb: FormBuilder) {}
+  constructor(private service: ApiService, private router: ActivatedRoute, private roterr: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.UserName = sessionStorage.getItem('username');
@@ -30,6 +30,19 @@ export class UserprofileeditComponent implements OnInit{
         try {
           this.Users = res;
           this.User = this.Users.find((user: any) => user.username === this.UserName);
+          console.log(this.User);
+          if (this.User) {
+            this.form = this.fb.group({
+              place: [this.User.place, [Validators.required]],
+              designation: [this.User.designation, [Validators.required]],
+              birthdate: [this.User.birthdate, [Validators.required]],
+              country: [this.User.country, [Validators.required]],
+              facebook: [this.User.facebook, [Validators.required]],
+              instagram: [this.User.instagram, [Validators.required]],
+              linkedIn: [this.User.linkedIn, [Validators.required]]
+            });
+          }
+
         } catch (error) {
           console.error('Error fetching user data:', error);
         }
@@ -38,15 +51,6 @@ export class UserprofileeditComponent implements OnInit{
         console.error('Error fetching user data:', error);
       }
     );
-    this.form = this.fb.group({
-      place: ['', [Validators.required]],
-      designation: ['', [Validators.required]],
-      birthdate: ['', [Validators.required]],
-      country: ['', [Validators.required]],
-      facebook: ['', [Validators.required]],
-      instagram: ['', [Validators.required]],
-      linkedIn: ['', [Validators.required]]
-    });
   }
 
   // Adding UserDetails
@@ -54,7 +58,7 @@ export class UserprofileeditComponent implements OnInit{
     if (this.form.valid) {
       const formData = this.form.value;
       try {
-        const userToUpdate = this.Users.find((user: any) => user.username === this.UserName );
+        const userToUpdate = this.Users.find((user: any) => user.username === this.UserName);
         if (userToUpdate) {
           userToUpdate.place = formData.place;
           userToUpdate.designation = formData.designation;
@@ -63,7 +67,7 @@ export class UserprofileeditComponent implements OnInit{
           userToUpdate.facebook = formData.facebook;
           userToUpdate.instagram = formData.instagram;
           userToUpdate.linkedIn = formData.linkedIn;
-            await this.service.UpdateUserDetails(userToUpdate).subscribe((res: any) => {
+          await this.service.UpdateUserDetails(userToUpdate).subscribe((res: any) => {
             this.roterr.navigateByUrl('profile');
             Swal.fire({
               icon: 'success',
@@ -83,8 +87,6 @@ export class UserprofileeditComponent implements OnInit{
       this.form.markAllAsTouched();
     }
   }
-
-
   
   
   
