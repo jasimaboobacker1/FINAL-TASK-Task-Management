@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { tasks } from '../../Interfaces/interfaces';
-import { Chart, registerables } from 'chart.js';
+import {  Chart, registerables } from 'chart.js';
 import { ApiService } from '../../Services/api.service';
 import Swal from 'sweetalert2';
 
@@ -24,7 +24,8 @@ export class DashboardComponent implements OnInit{
   CompletedUserTasks: tasks[] = [];
   tasksDetails:any;
   Usertasks:any;
-  
+  // completedCount: number = 0;
+  // pendingCount: number = 0;
 
   public Alltaskshow=true;
   public Pendingtaskshow=false;
@@ -32,9 +33,58 @@ export class DashboardComponent implements OnInit{
  
   constructor(private taskService: ApiService, private router: Router) { }
 
+
+  createPieChart(): void {
+    // const completedCount = this.CompletedUserTasks.length;
+    // const pendingCount = this.pendingUserTasks.length;
   
+    // console.log('Completed Count:', completedCount);
+    // console.log('Pending Count:', pendingCount);
+  
+    const ctx = document.getElementById('pieChart') as HTMLCanvasElement;
+    const myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Completed', 'Pending'],
+        datasets: [{
+          label: 'Task Status',
+          data: [4,6],
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 99, 132, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Task Status'
+          }
+        }
+      }
+    });
+  }
+  
+  // updateChart(): void {
+  //   this.completedCount = this.tasksDetails.filter((task: any) => task.status === 'completed').length;
+  //   this.pendingCount = this.tasksDetails.filter((task: any) => task.status === 'pending').length;
+
+  //   this.createPieChart();
+  // }
 
   ngOnInit(): void {
+    this.createPieChart();
+    // this.updateChart();
     this.Alltask();
     // this.Pending();
     // this.Completed();
