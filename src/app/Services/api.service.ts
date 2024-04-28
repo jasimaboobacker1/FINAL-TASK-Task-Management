@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Users, tasks } from '../Interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class ApiService {
   Getalltasks(){
     return this.http.get(this.taskapiurl)
   }
+
   // getTask
   GetTask(id: number) {
     return this.http.get(`${this.taskapiurl}/${id}`);
@@ -48,27 +50,36 @@ export class ApiService {
     Task.status = 'completed'; 
     return this.http.put(url, Task);
   }
+
+
+  // UpdateTaskDetail
+  UpdateTask(UpdatedTask: any) {    
+    console.log("Updating Task with ID:", UpdatedTask.id);
+    const urll = `${this.taskapiurl}/${UpdatedTask.id}`; 
+    return this.http.put(urll, UpdatedTask); 
+  }
+  
   
 
   // changepassword
-  ChangePassword(user: any) {
+  ChangePassword(user: Users) {
     return this.http.put(`${this.userapiurl}/${user.id}`, user);
   }
 
 
 
+  
+
   // Addtask
-  AddTask(Taskdetails:any){
+  AddTask(Taskdetails:tasks){
     return this.http.post(this.taskapiurl,Taskdetails)
   }
+
   
   // Delete Task
   DeleteTask(id:number){
     return this.http.delete(`${this.taskapiurl}/${id}`)
   }
 
-  // edit task
-  // EditStatus(id:any){
-  //   return this.http.patch(`${this.taskapiurl}/${id}`)
-  // }
+  
 }

@@ -17,7 +17,7 @@
     {
       "id": "671c",
       "email": "jasimaboobacker123@gmail.com",
-      "password": "111111",
+      "password": "123456",
       "username": "ja.xxm_",
       "place": "Kozhikode",
       "designation": "Angular Developer",
@@ -104,6 +104,15 @@
       "dueDate": "2024-05-10",
       "priority": "medium",
       "status": "completed",
+      "username": "ja.xxm_"
+    },
+    {
+      "id": "5e28",
+      "title": "gggg",
+      "description": "bhgftyh",
+      "dueDate": "2024-05-12",
+      "priority": "medium",
+      "status": "pending",
       "username": "ja.xxm_"
     }
   ]

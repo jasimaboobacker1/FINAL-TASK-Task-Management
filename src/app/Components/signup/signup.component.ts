@@ -30,7 +30,6 @@ export class SignupComponent implements OnInit{
     
   }
 
-
   // SignUp code
   async signUp(){
     if(this.form.valid){

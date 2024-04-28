@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../Services/api.service';
+import Swal from 'sweetalert2';
+import { tasks } from '../../../Interfaces/interfaces';
 
 @Component({
   selector: 'app-edittask',
@@ -29,7 +31,7 @@ export class EdittaskComponent {
     this.service.Getalltasks().subscribe((res) => {
       this.Tasks = res;
       this.Task = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);
-      console.log(this.Task); 
+      console.log(this.Tasks); 
     });
     this.form = this.fb.group({
       title: [this.Task.title, [Validators.required]],
@@ -42,27 +44,40 @@ export class EdittaskComponent {
 
   
 
-
- async Edittaskk(){
-    if(this.form.valid){
+  async Edittaskk() {
+    if (this.form.valid) {
       const formValue = this.form.value;
       const userName = sessionStorage.getItem('username');
-     
-      if(userName){
-        formValue.username = userName;
-        try{
-        
-        } catch(error){
-          console.error('Error adding task:', error);        
+      const UpdatedTask = this.Tasks.find((taskkk: tasks) => taskkk.id === this.TaskId);
+      
+      if (UpdatedTask) {
+        try {
+          UpdatedTask.id = this.TaskId;
+          UpdatedTask.title = formValue.title;
+          UpdatedTask.description = formValue.description;
+          UpdatedTask.dueDate = formValue.dueDate;
+          UpdatedTask.priority = formValue.priority;
+          UpdatedTask.status = formValue.status;
+          UpdatedTask.username = userName;
+          console.log(UpdatedTask);
+          
+          await this.service.UpdateUserDetails(UpdatedTask).subscribe((res:any)=>{
+             Swal.fire({
+            icon: 'success',
+            title: 'Details updated successfully',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          });
+        } catch (error) {
+          console.error('Error updating Task details:', error);
         }
-      } else {
-        console.error('User email not found in session storage');
       }
     } else {
       this.formSubmitted = true;
       this.form.markAllAsTouched();
     }
-
   }
+  
 
 }
