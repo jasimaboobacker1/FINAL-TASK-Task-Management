@@ -53,11 +53,11 @@ export class ApiService {
 
 
   // UpdateTaskDetail
-  UpdateTask(UpdatedTask: any) {    
-    console.log("Updating Task with ID:", UpdatedTask.id);
-    const urll = `${this.taskapiurl}/${UpdatedTask.id}`; 
-    return this.http.put(urll, UpdatedTask); 
-  }
+  UpdateTask(id: string, updatedTask: any) {
+    const url = `${this.taskapiurl}/${id}`;
+    return this.http.put(url, updatedTask);
+}
+
   
   
 

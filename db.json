@@ -11,8 +11,7 @@
       "country": "India",
       "facebook": "kdasalsalsals",
       "instagram": "malsalsals",
-      "linkedIn": "malsalsals",
-      "tasks": []
+      "linkedIn": "malsalsals"
     },
     {
       "id": "671c",
@@ -25,8 +24,7 @@
       "country": "India",
       "facebook": "https://www.facebook.com/TheDummyPage/",
       "instagram": "https://www.instagram.com/?hl=en",
-      "linkedIn": "https://www.linkedin.com/in/jasim-aboobacker-3353b1212/",
-      "tasks": []
+      "linkedIn": "https://www.linkedin.com/in/jasim-aboobacker-3353b1212/"
     },
     {
       "id": "d566",
@@ -44,46 +42,10 @@
   ],
   "Tasks": [
     {
-      "id": "884a",
-      "title": "sdsdsd",
-      "description": "sdsdsdsd",
-      "dueDate": "2024-05-10",
-      "priority": "low",
-      "status": "completed",
-      "username": "ja.xxm_"
-    },
-    {
       "id": "e022",
-      "title": "2qqw",
+      "title": "updated titleeeeeeeeeeedwdsdsdsddwdwswsws",
       "description": "sdsdsdsd",
       "dueDate": "2024-05-04",
-      "priority": "low",
-      "status": "completed",
-      "username": "ja.xxm_"
-    },
-    {
-      "id": "08c8",
-      "title": "wasasasas",
-      "description": "asasasas",
-      "dueDate": "2024-05-12",
-      "priority": "medium",
-      "status": "completed",
-      "username": "ja.xxm_"
-    },
-    {
-      "id": "66e6",
-      "title": "ss",
-      "description": "qwqw",
-      "dueDate": "2024-05-11",
-      "priority": "medium",
-      "status": "completed",
-      "username": "ja.xxm_"
-    },
-    {
-      "id": "c2c7",
-      "title": "qss",
-      "description": "sas",
-      "dueDate": "2024-04-27",
       "priority": "low",
       "status": "completed",
       "username": "ja.xxm_"
@@ -112,7 +74,25 @@
       "description": "bhgftyh",
       "dueDate": "2024-05-12",
       "priority": "medium",
-      "status": "pending",
+      "status": "completed",
+      "username": "ja.xxm_"
+    },
+    {
+      "id": "b598",
+      "title": "wws",
+      "description": "sssd",
+      "dueDate": "2024-05-05",
+      "priority": "medium",
+      "status": "completed",
+      "username": "ja.xxm_"
+    },
+    {
+      "id": "bba6",
+      "title": "xxxxxxxxxxxxx",
+      "description": "xxxzx",
+      "dueDate": "2024-05-11",
+      "priority": "medium",
+      "status": "completed",
       "username": "ja.xxm_"
     }
   ]

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavComponent } from '../../nav/nav.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../../Services/api.service';
 import Swal from 'sweetalert2';
 import { tasks } from '../../../Interfaces/interfaces';
@@ -23,7 +23,7 @@ export class EdittaskComponent {
   formSubmitted = false;
   form!: FormGroup;
 
-  constructor(private route: ActivatedRoute,private service:ApiService,private fb: FormBuilder){}
+  constructor(private route: ActivatedRoute,private service:ApiService,private fb: FormBuilder,private router:Router){}
 
   ngOnInit(): void {
    
@@ -61,13 +61,14 @@ export class EdittaskComponent {
           UpdatedTask.username = userName;
           console.log(UpdatedTask);
           
-          await this.service.UpdateUserDetails(UpdatedTask).subscribe((res:any)=>{
+          await this.service.UpdateTask(UpdatedTask.id, UpdatedTask).subscribe((res:any)=>{
              Swal.fire({
             icon: 'success',
             title: 'Details updated successfully',
             showConfirmButton: false,
             timer: 1500
           });
+          this.router.navigateByUrl(`viewtask/${UpdatedTask.id}`);
           });
         } catch (error) {
           console.error('Error updating Task details:', error);
@@ -78,6 +79,7 @@ export class EdittaskComponent {
       this.form.markAllAsTouched();
     }
   }
+  
   
 
 }

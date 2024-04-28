@@ -25,7 +25,9 @@
             </div>
             <div class="title">
                 <div class="lftt"><button (click)="Navigateedit(Task.id)">Edit</button></div>
-                <div class="rgt"> {{ Task?.status }}</div>
+                <div class="rgt"> <button (click)="deleteTask(Task.id)">Delete</button></div>
+                <div class="rgt"> <button (click)="updateStatus(Task)">Mark as completed</button></div>
+
             </div>
             <!-- <p>Title: </p>
             <p>Description: </p>
