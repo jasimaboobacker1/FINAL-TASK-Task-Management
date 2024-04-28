@@ -1,8 +1,8 @@
 <app-nav></app-nav>
 <div class="container">
     <div class="wrapper">
-      <div class="title"><span>Add Task</span></div>
-      <form  (ngSubmit)="Addtaskk()" [formGroup]="form">
+      <div class="title"><span>Edit Your Task Details</span></div>
+      <form  (ngSubmit)="Edittaskk()" [formGroup]="form">
        
         <div class="row">
             <input type="text" name="title" id="title" formControlName="title" required placeholder="Title">
@@ -42,7 +42,7 @@
        
         <div class="req">
             <div class="row button">
-              <button class="button" type="submit">Add</button>
+              <button class="button" type="submit">Edit</button>
             </div>
             <!-- <div class="row button">
                 <button class="button" type="button" (click)="navigatetodashboard()">Cancel</button>

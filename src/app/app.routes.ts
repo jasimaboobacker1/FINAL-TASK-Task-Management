@@ -6,10 +6,10 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { CreattaskComponent } from './Components/creattask/creattask.component';
 import { authGuard } from './Guards/auth.guard';
 import { UserprofileComponent } from './Components/userprofile/userprofile.component';
-import { EdittaskComponent } from './Components/edittask/edittask.component';
 import { TaskviewComponent } from './Components/taskview/taskview.component';
 import { UserprofileeditComponent } from './Components/userprofile/userprofileedit/userprofileedit.component';
 import { PasschangeComponent } from './Components/passchange/passchange.component';
+import { EdittaskComponent } from './Components/taskview/edittask/edittask.component';
 
 export const routes: Routes = [
     {
@@ -45,7 +45,7 @@ export const routes: Routes = [
         canActivate:[authGuard]
     },
     {
-        path:'edittask',
+        path:'edittask/:id',
         component:EdittaskComponent
     },
     {

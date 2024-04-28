@@ -22,40 +22,39 @@ export class DashboardComponent implements OnInit{
   tasks:any;
   pendingUserTasks: tasks[] = [];
   CompletedUserTasks: tasks[] = [];
+  OverdueUserTasks:tasks[]=[];
   tasksDetails:any;
   Usertasks:any;
-  // completedCount: number = 0;
-  // pendingCount: number = 0;
-
+  // completedTaskLength: number = 0; 
+  // pendingTaskLength: number = 0; 
+ 
   public Alltaskshow=true;
   public Pendingtaskshow=false;
   public Completedtaskshow=false;
+  public Overtaskshow=false;
  
   constructor(private taskService: ApiService, private router: Router) { }
+   
 
 
   createPieChart(): void {
-    // const completedCount = this.CompletedUserTasks.length;
-    // const pendingCount = this.pendingUserTasks.length;
-  
-    // console.log('Completed Count:', completedCount);
-    // console.log('Pending Count:', pendingCount);
-  
     const ctx = document.getElementById('pieChart') as HTMLCanvasElement;
     const myPieChart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Completed', 'Pending'],
+        labels: ['Completed', 'Pending', 'Overdue'],
         datasets: [{
           label: 'Task Status',
-          data: [4,6],
+          data: [4, 4, 2],
           backgroundColor: [
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
+            'rgba(75, 192, 192, 0.5)',  
+            'rgba(25, 99, 132, 0.5)',   
+            'rgba(234, 99, 120, 0.5)'    
           ],
           borderColor: [
             'rgba(75, 192, 192, 1)',
-            'rgba(255, 99, 132, 1)',
+            'rgba(25, 99, 132, 1)',
+            'rgba(234, 99, 120, 1)'
           ],
           borderWidth: 1
         }]
@@ -75,19 +74,23 @@ export class DashboardComponent implements OnInit{
     });
   }
   
-  // updateChart(): void {
-  //   this.completedCount = this.tasksDetails.filter((task: any) => task.status === 'completed').length;
-  //   this.pendingCount = this.tasksDetails.filter((task: any) => task.status === 'pending').length;
-
-  //   this.createPieChart();
+ 
+  // lengthCheck() {
+  //    this.pendingTaskLength = this.tasksDetails.filter((task: any) => task.status === 'pending').length;
+  //   console.log('Number of pending tasks:', this.pendingTaskLength);
+  //    this.completedTaskLength = this.tasksDetails.filter((task: any) => task.status === 'completed').length;
+  //   console.log('Number of completed tasks:', this.completedTaskLength);
   // }
+  
+
+    
 
   ngOnInit(): void {
-    this.createPieChart();
-    // this.updateChart();
     this.Alltask();
     // this.Pending();
     // this.Completed();
+    this.createPieChart();
+   
         
   }
 
@@ -102,10 +105,13 @@ export class DashboardComponent implements OnInit{
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.Usertasks = this.tasksDetails.filter((task: any) => task.username === UserName);
+      // this.lengthCheck();
     });
     this.Alltaskshow = true;
     this.Pendingtaskshow = false;
     this.Completedtaskshow = false;
+     this.Overtaskshow=false;
+
   }
   
   // getting pending task
@@ -115,11 +121,13 @@ export class DashboardComponent implements OnInit{
       const UserName = sessionStorage.getItem('username');
       this.pendingUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "pending");
       console.log(this.pendingUserTasks);
-      
+      // this.lengthCheck();      
     });
     this.Pendingtaskshow=true;
     this.Alltaskshow=false;
     this.Completedtaskshow=false;
+    this.Overtaskshow=false;
+
 }
 
   //getting Completed task
@@ -128,11 +136,30 @@ export class DashboardComponent implements OnInit{
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.CompletedUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "completed");
+      // this.lengthCheck();
     }); 
     this.Completedtaskshow=true;
     this.Pendingtaskshow=false;
     this.Alltaskshow=false;
+    this.Overtaskshow=false;
+
   }
+  // getting overdue tasks
+  Overdue(){
+    this.taskService.Getalltasks().subscribe((res) => {
+      this.tasksDetails = res;
+      const UserName = sessionStorage.getItem('username');
+      this.OverdueUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "overdue");
+      // this.lengthCheck();
+    }); 
+    this.Completedtaskshow=false;
+    this.Pendingtaskshow=false;
+    this.Alltaskshow=false;
+    this.Overtaskshow=true;
+
+  }
+  
+
 
   deleteTask(taskId:number){
     this.taskService.DeleteTask(taskId).subscribe((res)=>{
@@ -146,6 +173,8 @@ export class DashboardComponent implements OnInit{
     });   
     })
   }
+
+
   trackById(index: number, item: any) {
     return item.id; 
   }
@@ -178,7 +207,7 @@ export class DashboardComponent implements OnInit{
     this.router.navigateByUrl('createtask');
   }
 
-  viewnavigte(id:any){
+  viewnavigte(id:any){ 
     this.router.navigateByUrl(`viewtask/${id}`)
 
   }
