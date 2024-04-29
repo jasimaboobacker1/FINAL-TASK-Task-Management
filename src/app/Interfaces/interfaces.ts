@@ -1,12 +1,15 @@
 export interface Users {
-  id: number;
-  username: string;
+  id: string;
   email: string;
-  number: string;
-  image: string;
+  password: string;
+  username: string;
+  place: string;
+  designation: string;
   birthdate: string;
   country: string;
-  password?: string; 
+  facebook: string;
+  instagram: string;
+  linkedIn: string;
 }
 
 

@@ -3,6 +3,11 @@
     <div class="wrapper">
       <div class="title"><span>Add Your Details</span></div>
       <form (ngSubmit)="AddDetails()" [formGroup]="form">
+        <!-- <div class="row">
+          <input type="file" name="profilePicture" id="profilePicture" (change)="onFileSelected($event)" accept="image/*">
+          <div *ngIf="formSubmitted && form.get('profilePicture')?.invalid" class="inv">Profile picture is required</div>
+        </div> -->
+        
         <div class="row">
             <input type="text" name="place" id="place" formControlName="place" required placeholder="Place">
             <div *ngIf="formSubmitted && form.get('place')?.invalid" class="inv">Place is required</div>
@@ -32,6 +37,7 @@
             <input type="text" name="linkedIn" id="linkedIn" formControlName="linkedIn" placeholder="LinkedIn URL">
             <div *ngIf="formSubmitted && form.get('linkedIn')?.invalid" class="inv">LinkedIn link is required</div>
           </div>
+          
           
           
         <div class="req">

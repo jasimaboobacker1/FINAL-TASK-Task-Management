@@ -33,6 +33,7 @@ export class UserprofileeditComponent implements OnInit{
           console.log(this.User);
           if (this.User) {
             this.form = this.fb.group({
+              profilePicture: [''],
               place: [this.User.place, [Validators.required]],
               designation: [this.User.designation, [Validators.required]],
               birthdate: [this.User.birthdate, [Validators.required]],

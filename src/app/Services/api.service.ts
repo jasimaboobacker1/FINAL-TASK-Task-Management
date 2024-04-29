@@ -43,6 +43,14 @@ export class ApiService {
     return this.http.put(url, userToUpdate);
   }
 
+  uploadProfilePicture(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Replace 'your-upload-url' with your actual upload URL
+    return this.http.post<any>('your-upload-url', formData);
+  }
+
   // UpdateStatus
   UpdateStatus(Task: any) {
     console.log(Task.id);

@@ -4,11 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { tasks } from '../../Interfaces/interfaces';
-import {  Chart, registerables } from 'chart.js';
 import { ApiService } from '../../Services/api.service';
 import Swal from 'sweetalert2';
-
-Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
@@ -25,78 +22,24 @@ export class DashboardComponent implements OnInit{
   OverdueUserTasks:tasks[]=[];
   tasksDetails:any;
   Usertasks:any;
-  // completedTaskLength: number = 0; 
-  // pendingTaskLength: number = 0; 
  
   public Alltaskshow=true;
   public Pendingtaskshow=false;
   public Completedtaskshow=false;
   public Overtaskshow=false;
  
-  constructor(private taskService: ApiService, private router: Router) { }
-   
-
-
-  createPieChart(): void {
-    const ctx = document.getElementById('pieChart') as HTMLCanvasElement;
-    const myPieChart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: ['Completed', 'Pending', 'Overdue'],
-        datasets: [{
-          label: 'Task Status',
-          data: [4, 4, 2],
-          backgroundColor: [
-            'rgba(75, 192, 192, 0.5)',  
-            'rgba(25, 99, 132, 0.5)',   
-            'rgba(234, 99, 120, 0.5)'    
-          ],
-          borderColor: [
-            'rgba(75, 192, 192, 1)',
-            'rgba(25, 99, 132, 1)',
-            'rgba(234, 99, 120, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Task Status'
-          }
-        }
-      }
-    });
-  }
-  
- 
-  // lengthCheck() {
-  //    this.pendingTaskLength = this.tasksDetails.filter((task: any) => task.status === 'pending').length;
-  //   console.log('Number of pending tasks:', this.pendingTaskLength);
-  //    this.completedTaskLength = this.tasksDetails.filter((task: any) => task.status === 'completed').length;
-  //   console.log('Number of completed tasks:', this.completedTaskLength);
-  // }
-  
-
-    
+  constructor(private taskService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.Alltask();
-    // this.Pending();
-    // this.Completed();
-    this.createPieChart();
-   
-        
   }
+
 
   view(taskId:any){
     this.router.navigateByUrl(`viewtask/${taskId}`)
   }
+
+
 
   // getting all tasks
   Alltask() {

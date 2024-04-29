@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './Components/home/home.component';
 import { SignupComponent } from './Components/signup/signup.component';
-import { LoginComponent } from './Components/login/login.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { CreattaskComponent } from './Components/creattask/creattask.component';
 import { authGuard } from './Guards/auth.guard';
@@ -14,7 +12,7 @@ import { EdittaskComponent } from './Components/taskview/edittask/edittask.compo
 export const routes: Routes = [
     {
         path:'',
-        component:HomeComponent
+        loadComponent:()=>import('./Components/home/home.component').then((c)=>c.HomeComponent)
     },
     {
         path:'signup',
@@ -22,7 +20,7 @@ export const routes: Routes = [
     },
     {
         path:'login',
-        component:LoginComponent
+        loadComponent:()=>import('./Components/login/login.component').then((c)=>c.LoginComponent)
     },
     {
         path:'profile',

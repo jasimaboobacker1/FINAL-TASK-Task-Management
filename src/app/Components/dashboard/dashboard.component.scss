@@ -1,6 +1,6 @@
 .containerr{
     width: 100%;
-    min-height:618px;
+    min-height:600px;
     display: flex;
     justify-content: center;
     justify-content: space-between;
@@ -24,7 +24,7 @@
 }
 .buttons{
     width: 25%;
-    height: 550px;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -35,6 +35,8 @@
     border-radius:6px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
+
 .btnssssss{
     width:100%;
     height:200px;
@@ -101,3 +103,8 @@
 
 
 }
+
+
+
+
+

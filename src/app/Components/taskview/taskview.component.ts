@@ -72,10 +72,5 @@ export class TaskviewComponent implements OnInit{
     }
   }
   
-  
-  
-    
-   
-  
 
 }
