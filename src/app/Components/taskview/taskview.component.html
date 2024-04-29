@@ -1,42 +1,36 @@
 <app-nav></app-nav>
-<div class="container">
 
-    <div class="box">
-        <div class="left">
-            <div class="title">
-                <div class="lftt">title</div>
-                <div class="rgt">{{ Task?.title }}</div>
+<div class="containerrrr">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-0 shadow" id="boxx">
+                <div class="project-info-box mt-0" id="info">
+                    <h5>{{Task.title}}</h5>
+                    <p class="mb-0">{{Task.description}}</p>
+                </div>
+                <div class="project-info-box mt-0" id="info">
+                    <p><b>Due Date :</b> {{Task.dueDate}}</p>
+                    <p><b>Priority :</b> {{Task.priority}}</p>
+                    <!-- <p><b>Status : </b> <ng-container [ngSwitch]="Task.status"><th *ngSwitchCase="'pending'">{{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)"></th><th *ngSwitchCase="'overdue'">{{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)"></th><th *ngSwitchDefault style="color: green; font-weight: 800;">{{ Task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i></th></ng-container></p> -->
+                </div>
+                <div class="btnsssss">
+                    <button (click)="Navigateedit(Task.id)" class="buttontaskview">Edit</button>
+                    <button (click)="deleteTask(Task.id)" class="buttontaskviewdelete">Delete</button>
+                </div>
             </div>
-            <div class="title">
-                <div class="lftt">Description</div>
-                <div class="rgt">{{ Task?.description }}</div>
-            </div>
-            <div class="title">
-                <div class="lftt">dueDate</div>
-                <div class="rgt">{{ Task?.dueDate }}</div>
-            </div>
-            <div class="title">
-                <div class="lftt">priority</div>
-                <div class="rgt">{{ Task?.priority }}</div>
-            </div>
-            <div class="title">
-                <div class="lftt">status</div>
-                <div class="rgt"> {{ Task?.status }}</div>
-            </div>
-            <div class="title">
-                <div class="lftt"><button (click)="Navigateedit(Task.id)">Edit</button></div>
-                <div class="rgt"> <button (click)="deleteTask(Task.id)">Delete</button></div>
-                <div class="rgt"> <button (click)="updateStatus(Task)">Mark as completed</button></div>
-
-            </div>
-            <!-- <p>Title: </p>
-            <p>Description: </p>
-            <p>Due Date: </p>
-            <p>Priority: </p>
-            <p>Status:</p>
-           -->
         </div>
     </div>
-
 </div>
+<!-- 
+<ng-container [ngSwitch]="task.status">
+    <th *ngSwitchCase="'pending'">
+      {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
+    </th>
+    <th *ngSwitchCase="'overdue'">
+      {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
+    </th>
+    <th *ngSwitchDefault style="color: green;">
+      {{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i>
+    </th>
+  </ng-container>             -->
 

@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
 import { tasks } from '../../Interfaces/interfaces';
-import { ApiService } from '../../Services/api.service';
 import Swal from 'sweetalert2';
+import { ApiService } from '../../Shared-Module/Services/api.service';
 
 @Component({
   selector: 'app-dashboard',

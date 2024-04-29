@@ -5,8 +5,8 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
 import { NavComponent } from '../nav/nav.component';
-import { ApiService } from '../../Services/api.service';
 import { Users } from '../../Interfaces/interfaces';
+import { ApiService } from '../../Shared-Module/Services/api.service';
 
 
 @Component({

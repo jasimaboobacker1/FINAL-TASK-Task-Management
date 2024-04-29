@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
-import { ApiService } from '../../Services/api.service';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { ApiService } from '../../Shared-Module/Services/api.service';
 
 @Component({
   selector: 'app-userprofile',

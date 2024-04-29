@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavComponent } from '../../nav/nav.component';
-import { ApiService } from '../../../Services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { ApiService } from '../../../Shared-Module/Services/api.service';
 
 @Component({
   selector: 'app-userprofileedit',

@@ -18,7 +18,7 @@
       "email": "jasimaboobacker123@gmail.com",
       "password": "111111",
       "username": "ja.xxm_",
-      "place": "Kollam",
+      "place": "Kozhikode",
       "designation": "Angular Developer",
       "birthdate": "2024-04-10",
       "country": "India",
@@ -40,15 +40,5 @@
       "linkedIn": "https://www.linkedin.com/in/jasim-aboobacker-3353b1212/"
     }
   ],
-  "Tasks": [
-    {
-      "id": "d176",
-      "title": "uppdatedd",
-      "description": "jyylkk",
-      "dueDate": "2024-05-11",
-      "priority": "medium",
-      "status": "completed",
-      "username": "ja.xxm_"
-    }
-  ]
+  "Tasks": []
 }

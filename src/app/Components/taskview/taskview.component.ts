@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
-import { ApiService } from '../../Services/api.service';
-import { log } from 'console';
 import Swal from 'sweetalert2';
 import { tasks } from '../../Interfaces/interfaces';
+import { ApiService } from '../../Shared-Module/Services/api.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-taskview',
   standalone: true,
-  imports: [NavComponent],
+  imports: [NavComponent,FormsModule,CommonModule],
   templateUrl: './taskview.component.html',
   styleUrl: './taskview.component.scss'
 })
@@ -58,6 +59,7 @@ export class TaskviewComponent implements OnInit{
     try {
       const updatedTask = { ...task, status: 'completed' }; 
       await this.service.UpdateStatus(updatedTask).subscribe((res) => {
+        this.Get();
         Swal.fire({
           icon: 'success',
           title: 'Updated',

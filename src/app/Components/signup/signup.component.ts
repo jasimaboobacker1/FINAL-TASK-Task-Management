@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NavComponent } from '../nav/nav.component';
-import { ApiService } from '../../Services/api.service';
+import { ApiService } from '../../Shared-Module/Services/api.service';
 
 @Component({
   selector: 'app-signup',

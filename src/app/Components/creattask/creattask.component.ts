@@ -6,7 +6,7 @@ import { NavComponent } from '../nav/nav.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import Swal from 'sweetalert2';
 import { tasks } from '../../Interfaces/interfaces';
-import { ApiService } from '../../Services/api.service';
+import { ApiService } from '../../Shared-Module/Services/api.service';
 
 @Component({
   selector: 'app-creattask',
