@@ -6,6 +6,7 @@ import { NavComponent } from '../nav/nav.component';
 import { tasks } from '../../Interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { ApiService } from '../../Shared-Module/Services/api.service';
+import { Chart } from 'chart.js/auto';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +23,14 @@ export class DashboardComponent implements OnInit{
   OverdueUserTasks:tasks[]=[];
   tasksDetails:any;
   Usertasks:any;
+  pieChart: any;
+  public highPriorityTasks: any;
+  highPriorityTasksLength: number = 0; 
+  public mediumPriorityTasks: any;
+  mediumPriorityTasksLength: number = 0; 
+  public lowPriorityTasks: any;
+  lowPriorityTasksLength: number = 0; 
+ 
  
   public Alltaskshow=true;
   public Pendingtaskshow=false;
@@ -30,8 +39,55 @@ export class DashboardComponent implements OnInit{
  
   constructor(private taskService: ApiService, private router: Router) {}
 
+
+
+  createPieChart(): void {
+    const ctx = document.getElementById('pieChart') as HTMLCanvasElement;
+    this.pieChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['High', 'Medium', 'Low'],
+        datasets: [{
+          label: '# of Votes',
+          data: [4,3,3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Custom Chart Title'
+          }
+        }
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.Alltask();
+    this.createPieChart();
   }
 
 
@@ -48,7 +104,14 @@ export class DashboardComponent implements OnInit{
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.Usertasks = this.tasksDetails.filter((task: any) => task.username === UserName);
-      // this.lengthCheck();
+      this.highPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'high');
+      this.mediumPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'medium');
+      this.lowPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'low');
+      
+      this.highPriorityTasksLength = this.highPriorityTasks.length;
+      this.mediumPriorityTasksLength = this.mediumPriorityTasks.length;
+      this.lowPriorityTasksLength = this.lowPriorityTasks.length;
+            // this.lengthCheck();
     });
     this.Alltaskshow = true;
     this.Pendingtaskshow = false;
