@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  
 
   public userShow=false;
   public loginshow=true;
@@ -39,6 +40,7 @@ export class NavComponent {
     });  
     this.router.navigateByUrl('');
   }
+
   logoutCheck() {
     if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token')) {
       this.logoutshoow = true;

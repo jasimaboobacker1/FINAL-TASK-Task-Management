@@ -5,13 +5,24 @@
         <div class="row">
             <div class="col-md-0 shadow" id="boxx">
                 <div class="project-info-box mt-0" id="info">
-                    <h5>{{Task.title}}</h5>
+                    <h5 style="font-weight: 700;font-size: 30px;">{{Task.title}}</h5>
                     <p class="mb-0">{{Task.description}}</p>
                 </div>
                 <div class="project-info-box mt-0" id="info">
                     <p><b>Due Date :</b> {{Task.dueDate}}</p>
                     <p><b>Priority :</b> {{Task.priority}}</p>
-                    <!-- <p><b>Status : </b> <ng-container [ngSwitch]="Task.status"><th *ngSwitchCase="'pending'">{{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)"></th><th *ngSwitchCase="'overdue'">{{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)"></th><th *ngSwitchDefault style="color: green; font-weight: 800;">{{ Task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i></th></ng-container></p> -->
+                    <b style="color: grey;">Status : </b> 
+                        <div [ngSwitch]="Task.status" style="display: inline-block;">
+                          <div *ngSwitchCase="'pending'" style="display: inline-block;">
+                            {{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)">
+                          </div>
+                          <div *ngSwitchCase="'overdue'" style="display: inline-block;">
+                            {{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)">
+                          </div>
+                          <div *ngSwitchDefault style="display: inline-block;">
+                            <span style="color: green; font-weight: 800;">{{ Task.status }}</span> <i class="fa-solid fa-check" style="color: #107e02;margin-top: 5px;"></i>
+                          </div>
+                        </div>               
                 </div>
                 <div class="btnsssss">
                     <button (click)="Navigateedit(Task.id)" class="buttontaskview">Edit</button>
@@ -21,16 +32,3 @@
         </div>
     </div>
 </div>
-<!-- 
-<ng-container [ngSwitch]="task.status">
-    <th *ngSwitchCase="'pending'">
-      {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
-    </th>
-    <th *ngSwitchCase="'overdue'">
-      {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
-    </th>
-    <th *ngSwitchDefault style="color: green;">
-      {{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i>
-    </th>
-  </ng-container>             -->
-
