@@ -24,12 +24,11 @@ export class DashboardComponent implements OnInit{
   tasksDetails:any;
   Usertasks:any;
   pieChart: any;
-  public highPriorityTasks: any;
-  highPriorityTasksLength: number = 0; 
-  public mediumPriorityTasks: any;
-  mediumPriorityTasksLength: number = 0; 
-  public lowPriorityTasks: any;
-  lowPriorityTasksLength: number = 0; 
+  
+  data:any;
+  highcount:any[] = [];
+  medcount:any[] = [];
+  lowcount:any[] = [];
  
  
   public Alltaskshow=true;
@@ -41,15 +40,15 @@ export class DashboardComponent implements OnInit{
 
 
 
-  createPieChart(): void {
+  createPieChart(lowCount:number, medCount:number, highCount:number): void {
     const ctx = document.getElementById('pieChart') as HTMLCanvasElement;
     this.pieChart = new Chart(ctx, {
       type: 'pie',
       data: {
         labels: ['High', 'Medium', 'Low'],
         datasets: [{
-          label: '# of Votes',
-          data: [4,3,3],
+          label: 'Priority Tasks',
+          data: [highCount, medCount, lowCount],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -87,7 +86,31 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.Alltask();
-    this.createPieChart();
+    this.taskService.Getalltasks().subscribe(
+      (res) => {
+        this.data = res ?? [];
+        let highCount = 0;
+        let medCount = 0;
+        let lowCount = 0;
+    
+        this.data.forEach((task:any) => {
+          if (task.priority === 'high') {
+            highCount++;
+          } else if (task.priority === 'medium') {
+            medCount++;
+          } else if (task.priority === 'low') {
+            lowCount++;
+          }
+        });
+        this.createPieChart(lowCount, medCount, highCount);
+      },
+      (error) => {
+        console.error('Error fetching tasks:', error);
+      }
+    );
+    
+    
+    
   }
 
 
@@ -100,17 +123,16 @@ export class DashboardComponent implements OnInit{
   // getting all tasks
   Alltask() {
     this.taskService.Getalltasks().subscribe((res) => {
-      console.log(res);
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.Usertasks = this.tasksDetails.filter((task: any) => task.username === UserName);
-      this.highPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'high');
-      this.mediumPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'medium');
-      this.lowPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'low');
-      
-      this.highPriorityTasksLength = this.highPriorityTasks.length;
-      this.mediumPriorityTasksLength = this.mediumPriorityTasks.length;
-      this.lowPriorityTasksLength = this.lowPriorityTasks.length;
+      // this.highPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'high');
+      // this.mediumPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'medium');
+      // this.lowPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'low');
+     
+      // this.highPriorityTasksLength = this.highPriorityTasks.length;
+      // this.mediumPriorityTasksLength = this.mediumPriorityTasks.length;
+      // this.lowPriorityTasksLength = this.lowPriorityTasks.length;
             // this.lengthCheck();
     });
     this.Alltaskshow = true;
@@ -126,8 +148,6 @@ export class DashboardComponent implements OnInit{
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.pendingUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "pending");
-      console.log(this.pendingUserTasks);
-      // this.lengthCheck();      
     });
     this.Pendingtaskshow=true;
     this.Alltaskshow=false;
@@ -142,7 +162,6 @@ export class DashboardComponent implements OnInit{
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.CompletedUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "completed");
-      // this.lengthCheck();
     }); 
     this.Completedtaskshow=true;
     this.Pendingtaskshow=false;
@@ -156,7 +175,6 @@ export class DashboardComponent implements OnInit{
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.OverdueUserTasks = this.tasksDetails.filter((task: any) => task.username === UserName && task.status == "overdue");
-      // this.lengthCheck();
     }); 
     this.Completedtaskshow=false;
     this.Pendingtaskshow=false;
@@ -166,10 +184,8 @@ export class DashboardComponent implements OnInit{
   }
   
 
-
   deleteTask(taskId:number){
     this.taskService.DeleteTask(taskId).subscribe((res)=>{
-      console.log(res);
       this.Alltask();
       Swal.fire({
         icon: 'success',
