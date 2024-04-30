@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit{
   tasksDetails:any;
   Usertasks:any;
   pieChart: any;
-  
   data:any;
   highcount:any[] = [];
   medcount:any[] = [];
@@ -77,7 +76,7 @@ export class DashboardComponent implements OnInit{
           },
           title: {
             display: true,
-            text: 'Custom Chart Title'
+            text: 'Tasks with priority'
           }
         }
       }
@@ -113,27 +112,13 @@ export class DashboardComponent implements OnInit{
     
   }
 
-
-  view(taskId:any){
-    this.router.navigateByUrl(`viewtask/${taskId}`)
-  }
-
-
-
+  
   // getting all tasks
   Alltask() {
     this.taskService.Getalltasks().subscribe((res) => {
       this.tasksDetails = res;
       const UserName = sessionStorage.getItem('username');
       this.Usertasks = this.tasksDetails.filter((task: any) => task.username === UserName);
-      // this.highPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'high');
-      // this.mediumPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'medium');
-      // this.lowPriorityTasks = this.Usertasks.filter((task: any) => task.priority === 'low');
-     
-      // this.highPriorityTasksLength = this.highPriorityTasks.length;
-      // this.mediumPriorityTasksLength = this.mediumPriorityTasks.length;
-      // this.lowPriorityTasksLength = this.lowPriorityTasks.length;
-            // this.lengthCheck();
     });
     this.Alltaskshow = true;
     this.Pendingtaskshow = false;
@@ -183,7 +168,7 @@ export class DashboardComponent implements OnInit{
 
   }
   
-
+  //  deleting task
   deleteTask(taskId:number){
     this.taskService.DeleteTask(taskId).subscribe((res)=>{
       this.Alltask();
@@ -202,7 +187,7 @@ export class DashboardComponent implements OnInit{
   }
   
 
-  
+  // Updating Tasks status code
   async updateStatus(task: any) {
     try {
       const updatedTask = { ...task, status: 'completed' }; 
@@ -222,13 +207,12 @@ export class DashboardComponent implements OnInit{
   }
   
   
-  
-  
   // navigating to task create page
   Addnavigate() {
     this.router.navigateByUrl('createtask');
   }
-
+  
+  // navigating to task
   viewnavigte(id:any){ 
     this.router.navigateByUrl(`viewtask/${id}`)
 
