@@ -23,8 +23,8 @@ export class NavComponent {
   constructor(private router:Router){}
 
   UserCheck(){
-    if (typeof sessionStorage !== 'undefined') {
-            this.userShow=true;
+    if(typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token')){
+      this.userShow=true;
       this.loginshow=false;
     } 
   }
