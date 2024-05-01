@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit{
   }
 
   LoginCheck(){
-    if(sessionStorage.getItem('token')){
-      this.loginshow=false;
+    if (typeof sessionStorage !== 'undefined') {
+            this.loginshow=false;
     }
   }
 
