@@ -26,7 +26,7 @@ export class EdittaskComponent {
   constructor(private route: ActivatedRoute,private service:ApiService,private fb: FormBuilder,private router:Router){}
 
   ngOnInit(): void {
-    this.TaskId = this.route.snapshot.paramMap.get('id');
+    this.TaskId = Number(this.route.snapshot.paramMap.get('id'));
     this.service.Getalltasks().subscribe((res) => {
       this.Tasks = res;
       this.Task = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);

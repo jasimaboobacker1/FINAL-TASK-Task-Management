@@ -9,8 +9,8 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  private userapiurl='http://localhost:3000/Users';
-  private taskapiurl='http://localhost:3000/Tasks';
+  private userapiurl='https://task-jsonserver.onrender.com/users';
+  private taskapiurl='https://task-jsonserver.onrender.com/tasks';
 
   // getting allusers
   Getallusers(){

@@ -27,8 +27,8 @@ export class TaskviewComponent implements OnInit{
   }
 
   Get(){
-    this.TaskId = this.route.snapshot.paramMap.get('id');
-    this.service.Getalltasks().subscribe((res) => {
+    this.TaskId = Number(this.route.snapshot.paramMap.get('id'));
+        this.service.Getalltasks().subscribe((res) => {
       this.Tasks = res;
       this.Task = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);
       console.log(this.Task); 
