@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit{
   highcount:any[] = [];
   medcount:any[] = [];
   lowcount:any[] = [];
+  taskcount:number;
  
  
   public Alltaskshow=true;
@@ -35,7 +36,9 @@ export class DashboardComponent implements OnInit{
   public Completedtaskshow=false;
   public Overtaskshow=false;
  
-  constructor(private taskService: ApiService, private router: Router) {}
+  constructor(private taskService: ApiService, private router: Router) {
+    this.taskcount = 0;
+  }
 
 
 
@@ -91,7 +94,7 @@ export class DashboardComponent implements OnInit{
         let highCount = 0;
         let medCount = 0;
         let lowCount = 0;
-    
+  
         this.data.forEach((task:any) => {
           if (task.priority === 'high') {
             highCount++;
@@ -102,15 +105,16 @@ export class DashboardComponent implements OnInit{
           }
         });
         this.createPieChart(lowCount, medCount, highCount);
+  
+        this.taskcount = this.Usertasks.length;
+      
       },
       (error) => {
         console.error('Error fetching tasks:', error);
       }
     );
-    
-    
-    
   }
+  
 
   
   // getting all tasks
