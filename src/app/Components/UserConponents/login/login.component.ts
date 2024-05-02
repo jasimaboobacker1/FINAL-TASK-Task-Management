@@ -37,39 +37,47 @@ export class LoginComponent implements OnInit{
   }
   
   // login code
-  async Login(){
-    if(this.form.valid){
-      const formValue = this.form.value;
-      try {
-        const user = this.UsersDetails.find((user: Users) => user.username === formValue.username && user.password === formValue.password);        
-        if (user) {
-            const token = uuidv4();
-            sessionStorage.setItem('token', token);
-            sessionStorage.setItem('username', formValue.username);
-            this.router.navigateByUrl('dashboard');
+  async Login() {
+    if (this.form.valid) {
+        const formValue = this.form.value;
+        if (formValue.username === 'admin' && formValue.password === 'admin123') {
+            this.router.navigateByUrl('admindashboard');
+            sessionStorage.setItem('name', formValue.username);
             Swal.fire({
                 icon: 'success',
-                title: 'Logged in successfully',
+                title: 'Welcome Admin',
                 showConfirmButton: false,
                 timer: 1500
             });
         } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Login failed',
-                text: 'Invalid username or password',
-                timer: 1500,
-                showConfirmButton: false
-            });
+            const user = this.UsersDetails.find((user: Users) => user.username === formValue.username && user.password === formValue.password);
+            if (user) {
+                const token = uuidv4();
+                sessionStorage.setItem('token', token);
+                sessionStorage.setItem('username', formValue.username);
+                this.router.navigateByUrl('dashboard');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Logged in successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login failed',
+                    text: 'Invalid username or password',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            }
         }
-    } catch (error) {
-        console.error('Error signing up:', error);
-    }
     } else {
-          this.formSubmitted = true; 
-          this.form.markAllAsTouched();
-        } 
-  }
+        this.formSubmitted = true;
+        this.form.markAllAsTouched();
+    }
+}
+
 
  
   Sign() {

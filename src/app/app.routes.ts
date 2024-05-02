@@ -10,6 +10,9 @@ import { EdittaskComponent } from './Components/UserConponents/taskview/edittask
 import { TaskviewComponent } from './Components/UserConponents/taskview/taskview.component';
 import { CreattaskComponent } from './Components/UserConponents/creattask/creattask.component';
 import { authGuard } from './core/Guards/auth.guard';
+import { AdmindashboardComponent } from './Components/AdminComponents/admindashboard/admindashboard.component';
+import { UsermanageComponent } from './Components/AdminComponents/usermanage/usermanage.component';
+import { adminauthGuard } from './core/Guards/adminauth.guard';
 
 export const routes: Routes = [
     {
@@ -24,7 +27,7 @@ export const routes: Routes = [
     {
         path:'login',
         component:LoginComponent
-        // loadComponent:()=>import('./Components/login/login.component').then((c)=>c.LoginComponent)
+        // loadComponent:()=>import('./Components/UserConponents/login').then((c)=>c.LoginComponent)
     },
     {
         path:'profile',
@@ -58,5 +61,16 @@ export const routes: Routes = [
         path:'createtask',
         component:CreattaskComponent,
         // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
-    }
+    },
+    {
+        path:'admindashboard',
+        component:AdmindashboardComponent,
+        canActivate:[adminauthGuard]
+    },
+    {
+        path:'adminusermanage',
+        component:UsermanageComponent,
+        canActivate:[adminauthGuard]
+
+    },
 ];

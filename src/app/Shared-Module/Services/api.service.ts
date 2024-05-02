@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Users, tasks } from '../../Interfaces/interfaces';
+import { Users, tasks } from '../../core/Interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class ApiService {
   }
   
   // signup
-  Signup(userDetails: any) {
+  Signup(userDetails:any) {
     return this.http.post(this.userapiurl, userDetails);     
   }
 
@@ -43,17 +43,8 @@ export class ApiService {
     return this.http.put(url, userToUpdate);
   }
 
-  uploadProfilePicture(file: File) {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    // Replace 'your-upload-url' with your actual upload URL
-    return this.http.post<any>('your-upload-url', formData);
-  }
-
   // UpdateStatus
   UpdateStatus(Task: any) {
-    console.log(Task.id);
     const url = `${this.taskapiurl}/${Task.id}`;
     Task.status = 'completed'; 
     return this.http.put(url, Task);
@@ -67,16 +58,11 @@ export class ApiService {
 }
 
   
-  
-
   // changepassword
   ChangePassword(user: Users) {
     return this.http.put(`${this.userapiurl}/${user.id}`, user);
   }
 
-
-
-  
 
   // Addtask
   AddTask(Taskdetails:tasks){

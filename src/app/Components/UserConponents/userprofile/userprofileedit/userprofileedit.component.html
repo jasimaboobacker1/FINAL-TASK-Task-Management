@@ -3,10 +3,7 @@
     <div class="wrapper">
       <div class="title"><span>Add Your Details</span></div>
       <form (ngSubmit)="AddDetails()" [formGroup]="form">
-        <!-- <div class="row">
-          <input type="file" name="profilePicture" id="profilePicture" (change)="onFileSelected($event)" accept="image/*">
-          <div *ngIf="formSubmitted && form.get('profilePicture')?.invalid" class="inv">Profile picture is required</div>
-        </div> -->
+       
         
         <div class="row">
             <input type="text" name="place" id="place" formControlName="place" required placeholder="Place">
