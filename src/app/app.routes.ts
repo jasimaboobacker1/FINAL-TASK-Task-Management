@@ -1,18 +1,21 @@
 import { Routes } from '@angular/router';
-import { SignupComponent } from './Components/signup/signup.component';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
-import { CreattaskComponent } from './Components/creattask/creattask.component';
-import { authGuard } from './Guards/auth.guard';
-import { UserprofileComponent } from './Components/userprofile/userprofile.component';
-import { TaskviewComponent } from './Components/taskview/taskview.component';
-import { UserprofileeditComponent } from './Components/userprofile/userprofileedit/userprofileedit.component';
-import { PasschangeComponent } from './Components/passchange/passchange.component';
-import { EdittaskComponent } from './Components/taskview/edittask/edittask.component';
+import { HomeComponent } from './Components/UserConponents/home/home.component';
+import { LoginComponent } from './Components/UserConponents/login/login.component';
+import { SignupComponent } from './Components/UserConponents/signup/signup.component';
+import { UserprofileComponent } from './Components/UserConponents/userprofile/userprofile.component';
+import { UserprofileeditComponent } from './Components/UserConponents/userprofile/userprofileedit/userprofileedit.component';
+import { PasschangeComponent } from './Components/UserConponents/passchange/passchange.component';
+import { DashboardComponent } from './Components/UserConponents/dashboard/dashboard.component';
+import { EdittaskComponent } from './Components/UserConponents/taskview/edittask/edittask.component';
+import { TaskviewComponent } from './Components/UserConponents/taskview/taskview.component';
+import { CreattaskComponent } from './Components/UserConponents/creattask/creattask.component';
+import { authGuard } from './core/Guards/auth.guard';
 
 export const routes: Routes = [
     {
         path:'',
-        loadComponent:()=>import('./Components/home/home.component').then((c)=>c.HomeComponent)
+        component:HomeComponent
+        // loadComponent:()=>import('./Components/UserConponents/home').then((c)=>c.HomeComponent)
     },
     {
         path:'signup',
@@ -20,7 +23,8 @@ export const routes: Routes = [
     },
     {
         path:'login',
-        loadComponent:()=>import('./Components/login/login.component').then((c)=>c.LoginComponent)
+        component:LoginComponent
+        // loadComponent:()=>import('./Components/login/login.component').then((c)=>c.LoginComponent)
     },
     {
         path:'profile',

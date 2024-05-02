@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
-import { FooterComponent } from './Components/footer/footer.component';
+import { FooterComponent } from './Components/UserConponents/footer/footer.component';
 
 @Component({
   selector: 'app-root',

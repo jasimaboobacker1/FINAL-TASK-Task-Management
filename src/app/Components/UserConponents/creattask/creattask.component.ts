@@ -3,15 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 import Swal from 'sweetalert2';
-import { tasks } from '../../Interfaces/interfaces';
-import { ApiService } from '../../Shared-Module/Services/api.service';
+import { ApiService } from '../../../Shared-Module/Services/api.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { tasks } from '../../../core/Interfaces/interfaces';
 
 @Component({
   selector: 'app-creattask',
   standalone: true,
-  imports: [FormsModule,CommonModule,ReactiveFormsModule,RouterOutlet,RouterLink,NavComponent,DashboardComponent],
+  imports: [FormsModule,CommonModule,ReactiveFormsModule,RouterOutlet,RouterLink,NavComponent],
   templateUrl: './creattask.component.html',
   styleUrl: './creattask.component.scss'
 })

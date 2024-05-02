@@ -4,8 +4,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { tasks } from '../../../Interfaces/interfaces';
-import { ApiService } from '../../../Shared-Module/Services/api.service';
+import { ApiService } from '../../../../Shared-Module/Services/api.service';
+import { tasks } from '../../../../core/Interfaces/interfaces';
 
 @Component({
   selector: 'app-edittask',

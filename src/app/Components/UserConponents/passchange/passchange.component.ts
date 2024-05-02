@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ApiService } from '../../Shared-Module/Services/api.service';
+import { ApiService } from '../../../Shared-Module/Services/api.service';
 
 @Component({
   selector: 'app-passchange',

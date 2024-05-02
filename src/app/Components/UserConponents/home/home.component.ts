@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 

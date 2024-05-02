@@ -3,10 +3,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NavComponent } from '../nav/nav.component';
-import { tasks } from '../../Interfaces/interfaces';
 import Swal from 'sweetalert2';
-import { ApiService } from '../../Shared-Module/Services/api.service';
 import { Chart } from 'chart.js/auto';
+import { ApiService } from '../../../Shared-Module/Services/api.service';
+import { tasks } from '../../../core/Interfaces/interfaces';
 
 @Component({
   selector: 'app-dashboard',

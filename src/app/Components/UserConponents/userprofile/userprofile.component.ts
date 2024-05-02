@@ -3,7 +3,7 @@ import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/route
 import { NavComponent } from '../nav/nav.component';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { ApiService } from '../../Shared-Module/Services/api.service';
+import { ApiService } from '../../../Shared-Module/Services/api.service';
 
 @Component({
   selector: 'app-userprofile',
