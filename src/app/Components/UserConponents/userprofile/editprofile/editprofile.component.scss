@@ -23,7 +23,7 @@
     justify-content: center;
   }
   .wrapper form{
-    padding: 30px 25px 25px 25px;
+    padding: 30px ;
 
   }
   .wrapper form .row{
@@ -106,6 +106,27 @@
   }
   form .signup-link a:hover{
     text-decoration: underline;
+  }
+  .req{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap:10px;
+  }
+  .buttonnn{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 0px;
+    background: #353755;
+    border: 1px solid #353755;
+    cursor: pointer;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    margin: 0px;
+    width: 100px;
   }
 
   

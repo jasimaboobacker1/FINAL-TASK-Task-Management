@@ -2,8 +2,7 @@ import { Routes } from '@angular/router';
 import { SignupComponent } from './Components/UserConponents/signup/signup.component';
 import { authGuard } from './core/Guards/auth.guard';
 import { adminauthGuard } from './core/Guards/adminauth.guard';
-import { UserprofileeditComponent } from './Components/UserConponents/userprofile/userprofileedit/userprofileedit.component';
-import { EdittaskComponent } from './Components/UserConponents/taskview/edittask/edittask.component';
+import { EditprofileComponent } from './Components/UserConponents/userprofile/editprofile/editprofile.component';
 
 export const routes: Routes = [
     {
@@ -25,7 +24,7 @@ export const routes: Routes = [
     },
     {
         path:'editprofile',
-        component:UserprofileeditComponent
+        component:EditprofileComponent
         // loadComponent:()=>import('./Components/UserConponents/userprofile/userprofileedit/userprofileedit.component').then((c)=>c.UserprofileeditComponent)
     },
     {

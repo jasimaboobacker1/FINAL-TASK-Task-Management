@@ -1,15 +1,16 @@
 <app-nav></app-nav>
 <div class="container">
     <div class="wrapper">
-      <div class="title"><span>Add Your Details</span></div>
-      <form (ngSubmit)="AddDetails()" [formGroup]="form">
+      <div class="title"><span>Add Details</span></div>
+      <form  (ngSubmit)="Adddetail()" [formGroup]="form">
+       
         <div class="row">
-            <input type="text" name="place" id="place" formControlName="place" required placeholder="Place">
-            <div *ngIf="formSubmitted && form.get('place')?.invalid" class="inv">Place is required</div>
+            <input type="text" name="place" id="place" formControlName="place" required placeholder="place">
+            <div *ngIf="formSubmitted && form.get('place')?.invalid" class="inv">place is required</div>
         </div>
         <div class="row">
             <input type="text" name="designation" id="designation" formControlName="designation" required placeholder="designation">
-            <div *ngIf="formSubmitted && form.get('designation')?.invalid" class="inv">designation is required</div>
+            <div *ngIf="formSubmitted && form.get('designation')?.invalid" class="inv">newpassword is required</div>
         </div>
         <div class="row">
             <input type="date" name="birthdate" id="birthdate" formControlName="birthdate" required placeholder="Select your birthdate">
@@ -32,16 +33,16 @@
             <input type="text" name="linkedIn" id="linkedIn" formControlName="linkedIn" placeholder="LinkedIn URL">
             <div *ngIf="formSubmitted && form.get('linkedIn')?.invalid" class="inv">LinkedIn link is required</div>
           </div>
-          
-          
         <div class="req">
             <div class="row button">
-              <button class="button" type="submit">Add</button>
+              <button class="buttonnn" type="submit">Add</button>
             </div>
-            <!-- <div class="row button">
-                <button class="button" type="button" (click)="navigatetodashboard()">Cancel</button>
-              </div> -->
+            <div class="row button">
+                <button class="buttonnn" type="button" (click)="Cancel()" >Cancel</button>
+              </div>
         </div>
       </form>
     </div>
     </div>
+
+
