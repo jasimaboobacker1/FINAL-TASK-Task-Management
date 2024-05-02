@@ -21,6 +21,7 @@ export class UserprofileeditComponent implements OnInit{
   formSubmitted = false;
   form!: FormGroup;
 
+
   constructor(private service: ApiService, private router: ActivatedRoute, private roterr: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -32,16 +33,17 @@ export class UserprofileeditComponent implements OnInit{
           this.User = this.Users.find((user: any) => user.username === this.UserName);
           console.log(this.User);
           if (this.User) {
-            this.form = this.fb.group({
-              profilePicture: [''],
-              place: [this.User.place, [Validators.required]],
-              designation: [this.User.designation, [Validators.required]],
-              birthdate: [this.User.birthdate, [Validators.required]],
-              country: [this.User.country, [Validators.required]],
-              facebook: [this.User.facebook, [Validators.required]],
-              instagram: [this.User.instagram, [Validators.required]],
-              linkedIn: [this.User.linkedIn, [Validators.required]]
-            });
+            if (this.User) {
+          this.form = this.fb.group({
+      place: [this.User.place, [Validators.required]],
+      designation: [this.User.designation, [Validators.required]],
+      birthdate: [this.User.birthdate, [Validators.required]],
+      country: [this.User.country, [Validators.required]],
+      facebook: [this.User.facebook, [Validators.required]],
+      instagram: [this.User.instagram, [Validators.required]],
+      linkedIn: [this.User.linkedIn, [Validators.required]]
+    });
+  }
           }
 
         } catch (error) {

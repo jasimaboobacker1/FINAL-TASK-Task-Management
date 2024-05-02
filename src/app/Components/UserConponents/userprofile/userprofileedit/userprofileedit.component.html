@@ -3,8 +3,6 @@
     <div class="wrapper">
       <div class="title"><span>Add Your Details</span></div>
       <form (ngSubmit)="AddDetails()" [formGroup]="form">
-       
-        
         <div class="row">
             <input type="text" name="place" id="place" formControlName="place" required placeholder="Place">
             <div *ngIf="formSubmitted && form.get('place')?.invalid" class="inv">Place is required</div>
@@ -36,7 +34,6 @@
           </div>
           
           
-          
         <div class="req">
             <div class="row button">
               <button class="button" type="submit">Add</button>
@@ -48,4 +45,3 @@
       </form>
     </div>
     </div>
-

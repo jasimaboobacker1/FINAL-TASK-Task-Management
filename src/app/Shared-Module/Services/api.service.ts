@@ -39,6 +39,8 @@ export class ApiService {
 
   // AddUserDetails
   UpdateUserDetails(userToUpdate: any) {
+    console.log(userToUpdate);
+    
     const url = `${this.userapiurl}/${userToUpdate.id}`; 
     return this.http.put(url, userToUpdate);
   }

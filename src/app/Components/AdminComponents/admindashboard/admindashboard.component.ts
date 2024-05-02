@@ -15,37 +15,14 @@ import Swal from 'sweetalert2';
 })
 export class AdmindashboardComponent implements OnInit{
 
-  users: any;
-
+ 
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
-    this.GetUsers();
+  
   }
 
-  GetUsers(){
-    this.service.Getallusers().subscribe((res) => {
-      this.users = res;
-      console.log(this.users);
-    });
 
-  }
-
-  async Blockuser(id:number){
-    try{
-     await this.service.DeleteUser(id).subscribe((res)=>{  
-      Swal.fire({
-        icon: 'error',
-        title: 'Blocked',
-        showConfirmButton: false,
-        timer: 700
-      });
-      
-    this.GetUsers();
-    })
-    }catch(error){
-      console.log('Error',error);
-    } 
-  }
+ 
 
 }

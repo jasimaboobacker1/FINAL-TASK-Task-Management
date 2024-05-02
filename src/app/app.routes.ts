@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { SignupComponent } from './Components/UserConponents/signup/signup.component';
 import { authGuard } from './core/Guards/auth.guard';
 import { adminauthGuard } from './core/Guards/adminauth.guard';
+import { UserprofileeditComponent } from './Components/UserConponents/userprofile/userprofileedit/userprofileedit.component';
+import { EdittaskComponent } from './Components/UserConponents/taskview/edittask/edittask.component';
 
 export const routes: Routes = [
     {
@@ -23,7 +25,8 @@ export const routes: Routes = [
     },
     {
         path:'editprofile',
-        loadComponent:()=>import('./Components/UserConponents/userprofile/userprofileedit/userprofileedit.component').then((c)=>c.UserprofileeditComponent)
+        component:UserprofileeditComponent
+        // loadComponent:()=>import('./Components/UserConponents/userprofile/userprofileedit/userprofileedit.component').then((c)=>c.UserprofileeditComponent)
     },
     {
         path:'changepassword',
@@ -38,7 +41,9 @@ export const routes: Routes = [
     },
     {
         path:'edittask/:id',
-        loadComponent:()=>import('./Components/UserConponents/taskview/edittask/edittask.component').then((c)=>c.EdittaskComponent)
+        loadComponent:()=>import('./Components/UserConponents/taskview/edittask/edittask.component').then((c)=>c.EdittaskComponent),
+
+       
     },
     {
         path:'viewtask/:id',

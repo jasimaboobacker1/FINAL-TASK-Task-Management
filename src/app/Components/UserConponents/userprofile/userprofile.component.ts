@@ -45,12 +45,9 @@ export class UserprofileComponent implements OnInit{
   Pro(){
     this.roterr.navigateByUrl('dashboard')
   }
+  
   change(){
     this.roterr.navigateByUrl('changepassword')
   }
-  // showDialog() {
-  //   this.visible = true;
-  // }
-  
   
 }
