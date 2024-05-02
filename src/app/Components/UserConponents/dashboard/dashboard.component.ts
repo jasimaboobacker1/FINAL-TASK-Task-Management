@@ -114,6 +114,8 @@ export class DashboardComponent implements OnInit{
       }
     );
   }
+
+  
   
 
   
@@ -209,12 +211,16 @@ export class DashboardComponent implements OnInit{
       console.error('Error updating task status:', error);
     }
   }
+
+
+
   
   
   // navigating to task create page
   Addnavigate() {
     this.router.navigateByUrl('createtask');
   }
+
   
   // navigating to task
   viewnavigte(id:any){ 

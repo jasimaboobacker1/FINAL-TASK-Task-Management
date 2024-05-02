@@ -1,24 +1,12 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './Components/UserConponents/home/home.component';
-import { LoginComponent } from './Components/UserConponents/login/login.component';
 import { SignupComponent } from './Components/UserConponents/signup/signup.component';
-import { UserprofileComponent } from './Components/UserConponents/userprofile/userprofile.component';
-import { UserprofileeditComponent } from './Components/UserConponents/userprofile/userprofileedit/userprofileedit.component';
-import { PasschangeComponent } from './Components/UserConponents/passchange/passchange.component';
-import { DashboardComponent } from './Components/UserConponents/dashboard/dashboard.component';
-import { EdittaskComponent } from './Components/UserConponents/taskview/edittask/edittask.component';
-import { TaskviewComponent } from './Components/UserConponents/taskview/taskview.component';
-import { CreattaskComponent } from './Components/UserConponents/creattask/creattask.component';
 import { authGuard } from './core/Guards/auth.guard';
-import { AdmindashboardComponent } from './Components/AdminComponents/admindashboard/admindashboard.component';
-import { UsermanageComponent } from './Components/AdminComponents/usermanage/usermanage.component';
 import { adminauthGuard } from './core/Guards/adminauth.guard';
 
 export const routes: Routes = [
     {
         path:'',
-        component:HomeComponent
-        // loadComponent:()=>import('./Components/UserConponents/home').then((c)=>c.HomeComponent)
+        loadComponent:()=>import('../app/Components/UserConponents/home/home.component').then((c)=>c.HomeComponent)
     },
     {
         path:'signup',
@@ -26,51 +14,50 @@ export const routes: Routes = [
     },
     {
         path:'login',
-        component:LoginComponent
-        // loadComponent:()=>import('./Components/UserConponents/login').then((c)=>c.LoginComponent)
+        loadComponent:()=>import('./Components/UserConponents/login/login.component').then((c)=>c.LoginComponent)
     },
     {
         path:'profile',
-        component:UserprofileComponent,
+        loadComponent:()=>import('./Components/UserConponents/userprofile/userprofile.component').then((c)=>c.UserprofileComponent),
         canActivate:[authGuard]
     },
     {
         path:'editprofile',
-        component:UserprofileeditComponent,
+        loadComponent:()=>import('./Components/UserConponents/userprofile/userprofileedit/userprofileedit.component').then((c)=>c.UserprofileeditComponent)
     },
     {
         path:'changepassword',
-        component:PasschangeComponent,
+        loadComponent:()=>import('./Components/UserConponents/passchange/passchange.component').then((c)=>c.PasschangeComponent)
         // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
 
     },
     {
         path:'dashboard',
-        component:DashboardComponent,
+        loadComponent:()=>import('./Components/UserConponents/dashboard/dashboard.component').then((c)=>c.DashboardComponent),
         canActivate:[authGuard]
     },
     {
         path:'edittask/:id',
-        component:EdittaskComponent
+        loadComponent:()=>import('./Components/UserConponents/taskview/edittask/edittask.component').then((c)=>c.EdittaskComponent)
     },
     {
         path:'viewtask/:id',
-        component:TaskviewComponent
+        loadComponent:()=>import('./Components/UserConponents/taskview/taskview.component').then((c)=>c.TaskviewComponent)
     },
     {
         path:'createtask',
-        component:CreattaskComponent,
+        loadComponent:()=>import('./Components/UserConponents/creattask/creattask.component').then((c)=>c.CreattaskComponent)
         // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
     },
     {
         path:'admindashboard',
-        component:AdmindashboardComponent,
+        loadComponent:()=>import('./Components/AdminComponents/admindashboard/admindashboard.component').then((c)=>c.AdmindashboardComponent),
         canActivate:[adminauthGuard]
     },
     {
         path:'adminusermanage',
-        component:UsermanageComponent,
+        loadComponent:()=>import('./Components/AdminComponents/usermanage/usermanage.component').then((c)=>c.UsermanageComponent),
         canActivate:[adminauthGuard]
 
-    },
+    }
 ];

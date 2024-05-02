@@ -75,5 +75,10 @@ export class ApiService {
     return this.http.delete(`${this.taskapiurl}/${id}`)
   }
 
+  // Delete User
+  DeleteUser(id:number){
+    return this.http.delete(`${this.userapiurl}/${id}`)
+  }
+
   
 }
