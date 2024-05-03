@@ -26,6 +26,7 @@ export class TaskviewComponent implements OnInit{
     this.Get();
   }
 
+  // Getting all tasks
   Get(){
     this.TaskId = Number(this.route.snapshot.paramMap.get('id'));
         this.service.Getalltasks().subscribe((res) => {
@@ -36,11 +37,12 @@ export class TaskviewComponent implements OnInit{
 
   }
 
+  // Navigating to edit task 
   Navigateedit(taskId: any){
-    this.router.navigateByUrl(`edittask/${taskId}`)
-    console.log(taskId);
+    this.router.navigateByUrl(`edittask/${taskId}`);
   }
 
+  // Delete Task code
   deleteTask(taskId:number){
     this.service.DeleteTask(taskId).subscribe((res)=>{
       console.log(res);
@@ -55,6 +57,7 @@ export class TaskviewComponent implements OnInit{
     })
   }
 
+  // Updating Status code
   async updateStatus(task: tasks) {
     try {
       const updatedTask = { ...task, status: 'completed' }; 
@@ -73,7 +76,9 @@ export class TaskviewComponent implements OnInit{
       console.error('Error updating task status:', error);
     }
   }
+  
 
+  // Navigating to dashboard
   Cancell(){
     this.router.navigateByUrl('dashboard')
   }

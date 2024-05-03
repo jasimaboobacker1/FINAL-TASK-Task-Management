@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
 import { Users } from '../../../core/Interfaces/interfaces';
 import { NavComponent } from '../../../Shared-Module/nav/nav.component';
-import { NotificationService } from '../../Services/notification.service';
 
 
 
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit{
   form!: FormGroup;
   UsersDetails: any;
 
-  constructor(private router: Router, private fb: FormBuilder,private userServicee:ApiService,private od:NotificationService) { 
+  constructor(private router: Router, private fb: FormBuilder,private userServicee:ApiService) { 
   
   }
 

@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavComponent } from '../../../../Shared-Module/nav/nav.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { ApiService } from '../../../../Shared-Module/Services/api.service';
 import { tasks } from '../../../../core/Interfaces/interfaces';
-import { NavComponent } from '../../../../Shared-Module/nav/nav.component';
+import { log } from 'console';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-edittask',
+  selector: 'app-taskedit',
   standalone: true,
-  imports: [NavComponent,FormsModule,CommonModule,ReactiveFormsModule,],
-  templateUrl: './edittask.component.html',
-  styleUrl: './edittask.component.scss'
+  imports: [NavComponent,FormsModule,CommonModule,ReactiveFormsModule],
+  templateUrl: './taskedit.component.html',
+  styleUrl: './taskedit.component.scss'
 })
-export class EdittaskComponent {
+export class TaskeditComponent implements OnInit{
 
   TaskId: any;
   Task: any;
@@ -23,34 +24,38 @@ export class EdittaskComponent {
   formSubmitted = false;
   form!: FormGroup;
 
-  constructor(private route: ActivatedRoute,private service:ApiService,private fb: FormBuilder,private router:Router){}
+  constructor(private route: ActivatedRoute,private service:ApiService,private fb: FormBuilder,private router:Router)
+  {
+  }
 
   ngOnInit(): void {
     this.TaskId = Number(this.route.snapshot.paramMap.get('id'));
     this.service.Getalltasks().subscribe((res) => {
       this.Tasks = res;
-      this.Task = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);
-      this.initForm();
+      this.Task = this.Tasks.find((taskkk: tasks) => taskkk.id === this.TaskId);
+      console.log(this.Task);
+      
+      this.form = this.fb.group({
+        id: [this.Task.id, [Validators.required]],
+        title: [this.Task.title, [Validators.required]],
+        description: [this.Task.description, [Validators.required]],
+        dueDate: [this.Task.dueDate, [Validators.required]],
+        priority: [this.Task.priority, [Validators.required]],
+        status: [this.Task.status, [Validators.required]]
+      });
+      console.log(this.form.controls);     
+      
     });
   }
-
-  initForm(): void {
-    this.form = this.fb.group({
-      title: [this.Task.title, [Validators.required]],
-      description: [this.Task.description, [Validators.required]],
-      dueDate: [this.Task.dueDate, [Validators.required]],
-      priority: [this.Task.priority, [Validators.required]],
-      status: [this.Task.status, [Validators.required]]
-    });
-  }
-
   
 
-  async Edittaskk() {
+ async Edittaskk(){
     if (this.form.valid) {
       const formValue = this.form.value;
+      console.log(formValue);
+      
       const userName = sessionStorage.getItem('username');
-      const UpdatedTask = this.Tasks.find((taskkk: tasks) => taskkk.id === this.TaskId);
+      const UpdatedTask = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);
       
       if (UpdatedTask) {
         try {
@@ -81,7 +86,5 @@ export class EdittaskComponent {
       this.form.markAllAsTouched();
     }
   }
-  
-  
 
 }

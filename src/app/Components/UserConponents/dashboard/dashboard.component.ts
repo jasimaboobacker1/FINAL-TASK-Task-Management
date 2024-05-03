@@ -124,9 +124,7 @@ export class DashboardComponent implements OnInit{
   }
 
   
-  
 
-  
   // getting all tasks
   Alltask() {
     this.taskService.Getalltasks().subscribe((res) => {

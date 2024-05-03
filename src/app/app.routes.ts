@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/Guards/auth.guard';
 import { adminauthGuard } from './core/Guards/adminauth.guard';
 import { EditprofileComponent } from './Components/UserConponents/userprofile/editprofile/editprofile.component';
+import { TaskeditComponent } from './Components/UserConponents/taskview/taskedit/taskedit.component';
 
 export const routes: Routes = [
     {
@@ -40,7 +41,7 @@ export const routes: Routes = [
     },
     {
         path:'edittask/:id',
-        loadComponent:()=>import('./Components/UserConponents/taskview/edittask/edittask.component').then((c)=>c.EdittaskComponent),
+        component:TaskeditComponent,
         canActivate:[authGuard]
 
        
