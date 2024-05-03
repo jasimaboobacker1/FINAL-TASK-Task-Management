@@ -7,11 +7,12 @@ import { Chart } from 'chart.js/auto';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
 import { tasks } from '../../../core/Interfaces/interfaces';
 import { NavComponent } from '../../../Shared-Module/nav/nav.component';
+import { OverduecheckPipe } from '../../../core/Pipes/overduecheck.pipe';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [FormsModule,CommonModule,RouterOutlet,RouterLink,NavComponent],
+  imports: [FormsModule,CommonModule,RouterOutlet,RouterLink,NavComponent,OverduecheckPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -89,6 +90,11 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.Alltask();
+    this.LoadPiechart();
+  }
+
+
+  LoadPiechart(){
     this.taskService.Getalltasks().subscribe(
       (res) => {
         
@@ -186,7 +192,8 @@ export class DashboardComponent implements OnInit{
         showConfirmButton: false,
         timer: 1500
     });   
-    })
+    this.LoadPiechart();
+  })
   }
 
 

@@ -23,11 +23,13 @@ export const routes: Routes = [
     },
     {
         path:'editprofile',
-        component:EditprofileComponent
+        component:EditprofileComponent,
+        canActivate:[authGuard]
     },
     {
         path:'changepassword',
-        loadComponent:()=>import('./Components/UserConponents/passchange/passchange.component').then((c)=>c.PasschangeComponent)
+        loadComponent:()=>import('./Components/UserConponents/passchange/passchange.component').then((c)=>c.PasschangeComponent),
+        canActivate:[authGuard],
         // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
 
     },
@@ -39,16 +41,19 @@ export const routes: Routes = [
     {
         path:'edittask/:id',
         loadComponent:()=>import('./Components/UserConponents/taskview/edittask/edittask.component').then((c)=>c.EdittaskComponent),
+        canActivate:[authGuard]
 
        
     },
     {
         path:'viewtask/:id',
-        loadComponent:()=>import('./Components/UserConponents/taskview/taskview.component').then((c)=>c.TaskviewComponent)
+        loadComponent:()=>import('./Components/UserConponents/taskview/taskview.component').then((c)=>c.TaskviewComponent),
+        canActivate:[authGuard]
     },
     {
         path:'createtask',
-        loadComponent:()=>import('./Components/UserConponents/creattask/creattask.component').then((c)=>c.CreattaskComponent)
+        loadComponent:()=>import('./Components/UserConponents/creattask/creattask.component').then((c)=>c.CreattaskComponent),
+        canActivate:[authGuard]
         // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
     },
     {
