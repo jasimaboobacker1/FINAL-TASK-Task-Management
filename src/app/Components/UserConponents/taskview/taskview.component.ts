@@ -73,6 +73,10 @@ export class TaskviewComponent implements OnInit{
       console.error('Error updating task status:', error);
     }
   }
+
+  Cancell(){
+    this.router.navigateByUrl('dashboard')
+  }
   
 
 }

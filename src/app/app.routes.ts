@@ -25,7 +25,6 @@ export const routes: Routes = [
     {
         path:'editprofile',
         component:EditprofileComponent
-        // loadComponent:()=>import('./Components/UserConponents/userprofile/userprofileedit/userprofileedit.component').then((c)=>c.UserprofileeditComponent)
     },
     {
         path:'changepassword',
