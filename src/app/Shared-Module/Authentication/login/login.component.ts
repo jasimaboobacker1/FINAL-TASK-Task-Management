@@ -4,9 +4,11 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
-import { NavComponent } from '../nav/nav.component';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
 import { Users } from '../../../core/Interfaces/interfaces';
+import { NavComponent } from '../../../Shared-Module/nav/nav.component';
+import { NotificationService } from '../../Services/notification.service';
+
 
 
 @Component({
@@ -23,7 +25,11 @@ export class LoginComponent implements OnInit{
   form!: FormGroup;
   UsersDetails: any;
 
-  constructor(private router: Router, private fb: FormBuilder,private userServicee:ApiService) { }
+  constructor(private router: Router, private fb: FormBuilder,private userServicee:ApiService,private od:NotificationService) { 
+  
+  }
+
+  
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -49,6 +55,7 @@ export class LoginComponent implements OnInit{
                 showConfirmButton: false,
                 timer: 1500
             });
+           
         } else {
             const user = this.UsersDetails.find((user: Users) => user.username === formValue.username && user.password === formValue.password);
             if (user) {

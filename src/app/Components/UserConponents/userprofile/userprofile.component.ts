@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
-import { NavComponent } from '../nav/nav.component';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
+import { NavComponent } from '../../../Shared-Module/nav/nav.component';
 
 @Component({
   selector: 'app-userprofile',
@@ -17,16 +17,36 @@ export class UserprofileComponent implements OnInit{
    User:any;
   Users:any;
   UserName:any;
-  // visible: boolean = false;
+ 
   constructor(private service:ApiService,private router:ActivatedRoute,private roterr:Router){}
 
   Edit(){
     this.roterr.navigateByUrl('editprofile')
   }
 
+  handleFileInput(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById('profilePhoto')!.setAttribute('src', reader.result as string);
+        sessionStorage.setItem('picture',file.name)
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  
+
 
   ngOnInit(): void {
     this.UserName = sessionStorage.getItem('username');
+    const profilePicture = sessionStorage.getItem('picture');
+    if (profilePicture) {
+        this.User.profileimage = profilePicture;
+        console.log(this.User.profileimage);
+        
+    }
     this.service.Getallusers().subscribe(
       (res) => {
         try {

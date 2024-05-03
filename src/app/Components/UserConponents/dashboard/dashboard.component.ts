@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { NavComponent } from '../nav/nav.component';
 import Swal from 'sweetalert2';
 import { Chart } from 'chart.js/auto';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
 import { tasks } from '../../../core/Interfaces/interfaces';
+import { NavComponent } from '../../../Shared-Module/nav/nav.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit{
   tasksDetails:any;
   Usertasks:any;
   pieChart: any;
+
   data:any;
   highcount:any[] = [];
   medcount:any[] = [];
@@ -90,6 +91,7 @@ export class DashboardComponent implements OnInit{
     this.Alltask();
     this.taskService.Getalltasks().subscribe(
       (res) => {
+        
         this.data = res ?? [];
         let highCount = 0;
         let medCount = 0;

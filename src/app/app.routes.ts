@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { SignupComponent } from './Components/UserConponents/signup/signup.component';
 import { authGuard } from './core/Guards/auth.guard';
 import { adminauthGuard } from './core/Guards/adminauth.guard';
 import { EditprofileComponent } from './Components/UserConponents/userprofile/editprofile/editprofile.component';
@@ -11,11 +10,11 @@ export const routes: Routes = [
     },
     {
         path:'signup',
-        component:SignupComponent
+        loadComponent:()=>import('./Shared-Module/Authentication/signup/signup.component').then((c)=>c.SignupComponent)
     },
     {
         path:'login',
-        loadComponent:()=>import('./Components/UserConponents/login/login.component').then((c)=>c.LoginComponent)
+        loadComponent:()=>import('./Shared-Module/Authentication/login/login.component').then((c)=>c.LoginComponent)
     },
     {
         path:'profile',

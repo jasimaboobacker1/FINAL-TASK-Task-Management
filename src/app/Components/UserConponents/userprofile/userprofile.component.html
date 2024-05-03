@@ -2,8 +2,11 @@
 <div class="container">
     <div class="card-container">
         <span class="pro" (click)="Edit()">Edit</span>
-        <img class="round" src="assets/user.png" width="100px" height="100px" alt="user" />
-        <h3>{{User.username}}</h3>
+
+        <img id="profilePhoto" [src]="User.profileimage ? User.profileimage : 'assets/profile-illustration.png'" class="round" width="100px" height="100px" alt="user" (click)="fileInput.click()" />
+        <input #fileInput type="file" (change)="handleFileInput($event)" style="display:none" accept="image/*" />    
+        
+       <h3>{{User.username}}</h3>
         <h6>{{ User.place || 'Add Place' }}</h6>
         <p>{{ User.designation || 'Add Designation ' }}</p>
         <p>{{ User.birthdate || 'Add Birthdate' }}</p>

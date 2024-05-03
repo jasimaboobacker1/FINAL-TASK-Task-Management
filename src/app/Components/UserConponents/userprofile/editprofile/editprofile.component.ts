@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NavComponent } from '../../nav/nav.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../../Shared-Module/Services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Users } from '../../../../core/Interfaces/interfaces';
 import Swal from 'sweetalert2';
+import { NavComponent } from '../../../../Shared-Module/nav/nav.component';
 
 @Component({
   selector: 'app-editprofile',
@@ -24,7 +24,12 @@ export class EditprofileComponent implements OnInit{
   User: any;
   Users: any;
 
+ 
+
   constructor(private service: ApiService, private router: ActivatedRoute, private roterr: Router, private fb: FormBuilder) {}
+  
+
+
 
   ngOnInit(): void {
     this.UserName = sessionStorage.getItem('username');
@@ -48,8 +53,11 @@ export class EditprofileComponent implements OnInit{
       country: ['', [Validators.required]],
       facebook: ['', [Validators.required]],
       instagram: ['', [Validators.required]],
-      linkedIn: ['', [Validators.required]]
+      linkedIn: ['', [Validators.required]],
+     
     });
+   
+    
   }
 
  async Adddetail() {

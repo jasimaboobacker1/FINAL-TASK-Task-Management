@@ -40,9 +40,14 @@ export class ApiService {
   // AddUserDetails
   UpdateUserDetails(userToUpdate: any) {
     console.log(userToUpdate);
-    
     const url = `${this.userapiurl}/${userToUpdate.id}`; 
     return this.http.put(url, userToUpdate);
+  }
+
+ Updatepeofilephoto(Updateduser: any) {
+  console.log(Updateduser);
+     const url = `${this.userapiurl}/${Updateduser.id}`; 
+     return this.http.put(url, Updateduser);
   }
 
   // UpdateStatus

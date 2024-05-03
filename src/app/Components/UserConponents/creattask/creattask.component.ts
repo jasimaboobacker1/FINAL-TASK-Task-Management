@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { NavComponent } from '../nav/nav.component';
 import Swal from 'sweetalert2';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 import { tasks } from '../../../core/Interfaces/interfaces';
+import { NavComponent } from '../../../Shared-Module/nav/nav.component';
 
 @Component({
   selector: 'app-creattask',

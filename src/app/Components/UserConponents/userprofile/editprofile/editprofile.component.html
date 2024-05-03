@@ -3,7 +3,9 @@
     <div class="wrapper">
       <div class="title"><span>Add Details</span></div>
       <form  (ngSubmit)="Adddetail()" [formGroup]="form">
+
        
+        
         <div class="row">
             <input type="text" name="place" id="place" formControlName="place" required placeholder="place">
             <div *ngIf="formSubmitted && form.get('place')?.invalid" class="inv">place is required</div>

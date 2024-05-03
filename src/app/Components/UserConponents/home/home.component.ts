@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavComponent } from '../nav/nav.component';
 import {  Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavComponent } from '../../../Shared-Module/nav/nav.component';
 
 @Component({
   selector: 'app-home',

@@ -10,6 +10,7 @@ export interface Users {
   facebook: string;
   instagram: string;
   linkedIn: string;
+  profileimage:string;
 }
 
 

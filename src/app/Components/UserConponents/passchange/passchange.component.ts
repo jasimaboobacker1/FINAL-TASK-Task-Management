@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavComponent } from '../nav/nav.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
+import { NavComponent } from '../../../Shared-Module/nav/nav.component';
 
 @Component({
   selector: 'app-passchange',
