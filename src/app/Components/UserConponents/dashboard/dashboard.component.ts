@@ -33,6 +33,9 @@ export class DashboardComponent implements OnInit{
   medcount:any[] = [];
   lowcount:any[] = [];
   taskcount:number;
+
+  sortColumn: any;
+  sortDirection: 'asc' | 'desc' = 'asc';
  
  
   public Alltaskshow=true;
@@ -89,6 +92,24 @@ export class DashboardComponent implements OnInit{
       }
     });
   }
+
+  
+
+  sortTasks(): void {
+    if (this.sortColumn && this.Usertasks) {
+      this.Usertasks.sort((a: any, b: any) => {
+        const valueA = a[this.sortColumn];
+        const valueB = b[this.sortColumn];
+        return typeof valueA === 'string'
+          ? valueA.localeCompare(valueB)
+          : valueA - valueB;
+      });
+    }
+  }
+  
+  
+  
+
 
   ngOnInit(): void {
     this.Alltask();

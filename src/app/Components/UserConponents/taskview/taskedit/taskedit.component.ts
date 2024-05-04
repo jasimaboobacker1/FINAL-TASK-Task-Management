@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../../../Shared-Module/Services/api.service';
 import { tasks } from '../../../../core/Interfaces/interfaces';
-import { log } from 'console';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -52,11 +51,9 @@ export class TaskeditComponent implements OnInit{
  async Edittaskk(){
     if (this.form.valid) {
       const formValue = this.form.value;
-      console.log(formValue);
-      
+      console.log(formValue);     
       const userName = sessionStorage.getItem('username');
-      const UpdatedTask = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);
-      
+      const UpdatedTask = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);    
       if (UpdatedTask) {
         try {
           UpdatedTask.id = this.TaskId;

@@ -47,13 +47,13 @@ export class EditprofileComponent implements OnInit{
       }
     );
     this.form = this.fb.group({
-      place: ['', [Validators.required]],
-      designation: ['', [Validators.required]],
-      birthdate: ['', [Validators.required]],
-      country: ['', [Validators.required]],
-      facebook: ['', [Validators.required]],
-      instagram: ['', [Validators.required]],
-      linkedIn: ['', [Validators.required]],
+      place: [[this.User.place], [Validators.required]],
+      designation: [[this.User.designation], [Validators.required]],
+      birthdate: [[this.User.birthdate], [Validators.required]],
+      country: [[this.User.country], [Validators.required]],
+      facebook: [[this.User.facebook], [Validators.required]],
+      instagram: [[this.User.instagram], [Validators.required]],
+      linkedIn: [[this.User.linkedIn], [Validators.required]],
      
     });
    

@@ -13,6 +13,12 @@
           <button class="btnfilter" type="button" (click)="Pending()">Pending Tasks</button>
           <button class="btnfilter" type="button"  (click)="Completed()">Completed Tasks</button>
           <button class="btnfilter" type="button"  (click)="Overdue()">OverDue Tasks</button>
+          <h6>Sort by :</h6>
+          <select class="btnfilterselect" [(ngModel)]="sortColumn" (change)="sortTasks()" >
+            <option value="title">Task Name</option>
+            <option value="dueDate">Due Date</option>
+            <option value="status">Status</option>
+          </select>
        </div>
        <div class="btnssssssss" >
        <h1 style="font-size: 60px;font-weight: 900;">{{taskcount}}</h1>

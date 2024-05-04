@@ -4,10 +4,10 @@
       <div class="title"><span>Edit Your Task Details</span></div>
       <form  (ngSubmit)="Edittaskk()" [formGroup]="form">
 
-        <div class="row">
+        <!-- <div class="row">
             <input type="text" name="id" id="id" formControlName="id" required placeholder="id">
             <div *ngIf="formSubmitted && form.get('id')?.invalid" class="id">Title is required</div>
-          </div>
+          </div> -->
        
         <div class="row">
             <input type="text" name="title" id="title" formControlName="title" required placeholder="title">
