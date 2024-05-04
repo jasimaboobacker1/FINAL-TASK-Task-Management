@@ -6,12 +6,11 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
 import { tasks } from '../../../core/Interfaces/interfaces';
 import { NavComponent } from '../../../Shared-Module/nav/nav.component';
-import { OverduecheckPipe } from '../../../core/Pipes/overduecheck.pipe';
 
 @Component({
   selector: 'app-taskview',
   standalone: true,
-  imports: [NavComponent,FormsModule,CommonModule,OverduecheckPipe],
+  imports: [NavComponent,FormsModule,CommonModule],
   templateUrl: './taskview.component.html',
   styleUrl: './taskview.component.scss'
 })
