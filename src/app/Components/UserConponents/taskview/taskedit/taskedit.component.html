@@ -5,7 +5,7 @@
       <form  #f="ngForm" (ngSubmit)="f.form.valid && Edittaskk()">
 
         <div class="row">
-            <input type="text" name="id" id="id"  required placeholder="title"
+            <input type="text" name="title" id="title"  required placeholder="title"
             [(ngModel)]="form.title"
             required
             #title="ngModel"

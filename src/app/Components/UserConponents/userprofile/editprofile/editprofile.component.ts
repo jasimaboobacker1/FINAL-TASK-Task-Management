@@ -16,21 +16,23 @@ import { NavComponent } from '../../../../Shared-Module/nav/nav.component';
 })
 export class EditprofileComponent implements OnInit{
 
-  
-  formSubmitted = false;
-  form!: FormGroup;
 
   UserName: any;
   User: any;
   Users: any;
 
- 
+  form = {
+    place:'',
+      designation:'',
+      birthdate:'',
+      country: '',
+      facebook: '',
+      instagram: '',
+      linkedIn: '',
+  };
 
   constructor(private service: ApiService, private router: ActivatedRoute, private roterr: Router, private fb: FormBuilder) {}
   
-
-
-
   ngOnInit(): void {
     this.UserName = sessionStorage.getItem('username');
     this.service.Getallusers().subscribe(
@@ -38,7 +40,16 @@ export class EditprofileComponent implements OnInit{
         try {
           this.Users = res;
           this.User = this.Users.find((user: any) => user.username === this.UserName);
-          this.initForm(); // Initialize the form after user data is fetched
+          if (this.User) {
+            this.form.place = this.User.place;
+            this.form.designation = this.User.designation;
+            this.form.birthdate = this.User.birthdate;
+            this.form.country = this.User.country;
+            this.form.facebook = this.User.facebook;
+            this.form.instagram = this.User.instagram;
+            this.form.linkedIn = this.User.linkedIn;
+
+          }
         } catch (error) {
           console.error('Error fetching user data:', error);
         }
@@ -49,23 +60,9 @@ export class EditprofileComponent implements OnInit{
     );
   }
   
-  initForm(): void {
-    this.form = this.fb.group({
-      place: [this.User.place, [Validators.required]],
-      designation: [this.User.designation, [Validators.required]],
-      birthdate: [this.User.birthdate, [Validators.required]],
-      country: [this.User.country, [Validators.required]],
-      facebook: [this.User.facebook, [Validators.required]],
-      instagram: [this.User.instagram, [Validators.required]],
-      linkedIn: [this.User.linkedIn, [Validators.required]],
-    });
-  }
-  
-
  async Adddetail() {
-    this.formSubmitted = true; 
-    if (this.form.valid) {
-      const formData = this.form.value;
+    if (this.form) {
+      const formData = this.form;
       try {
         const userToUpdate = this.Users.find((user: Users) => user.username === this.UserName);
         if (userToUpdate) {
@@ -101,6 +98,4 @@ export class EditprofileComponent implements OnInit{
     this.roterr.navigateByUrl('profile')
   }
   
-
-
 }
