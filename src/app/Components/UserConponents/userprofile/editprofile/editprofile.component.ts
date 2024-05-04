@@ -38,6 +38,7 @@ export class EditprofileComponent implements OnInit{
         try {
           this.Users = res;
           this.User = this.Users.find((user: any) => user.username === this.UserName);
+          this.initForm(); // Initialize the form after user data is fetched
         } catch (error) {
           console.error('Error fetching user data:', error);
         }
@@ -46,19 +47,20 @@ export class EditprofileComponent implements OnInit{
         console.error('Error fetching user data:', error);
       }
     );
-    this.form = this.fb.group({
-      place: [[this.User.place], [Validators.required]],
-      designation: [[this.User.designation], [Validators.required]],
-      birthdate: [[this.User.birthdate], [Validators.required]],
-      country: [[this.User.country], [Validators.required]],
-      facebook: [[this.User.facebook], [Validators.required]],
-      instagram: [[this.User.instagram], [Validators.required]],
-      linkedIn: [[this.User.linkedIn], [Validators.required]],
-     
-    });
-   
-    
   }
+  
+  initForm(): void {
+    this.form = this.fb.group({
+      place: [this.User.place, [Validators.required]],
+      designation: [this.User.designation, [Validators.required]],
+      birthdate: [this.User.birthdate, [Validators.required]],
+      country: [this.User.country, [Validators.required]],
+      facebook: [this.User.facebook, [Validators.required]],
+      instagram: [this.User.instagram, [Validators.required]],
+      linkedIn: [this.User.linkedIn, [Validators.required]],
+    });
+  }
+  
 
  async Adddetail() {
     this.formSubmitted = true; 

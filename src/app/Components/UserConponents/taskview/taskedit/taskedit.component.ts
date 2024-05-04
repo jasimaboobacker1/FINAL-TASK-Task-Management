@@ -20,12 +20,18 @@ export class TaskeditComponent implements OnInit{
   Task: any;
   Tasks:any;
 
-  formSubmitted = false;
-  form!: FormGroup;
-
   constructor(private route: ActivatedRoute,private service:ApiService,private fb: FormBuilder,private router:Router)
   {
   }
+
+  form = {
+    title: '',
+    description:'',
+    dueDate:'',
+    priority:'',
+    status:'',
+  };
+
 
   ngOnInit(): void {
     this.TaskId = Number(this.route.snapshot.paramMap.get('id'));
@@ -33,24 +39,21 @@ export class TaskeditComponent implements OnInit{
       this.Tasks = res;
       this.Task = this.Tasks.find((taskkk: tasks) => taskkk.id === this.TaskId);
       console.log(this.Task);
-      
-      this.form = this.fb.group({
-        id: [this.Task.id, [Validators.required]],
-        title: [this.Task.title, [Validators.required]],
-        description: [this.Task.description, [Validators.required]],
-        dueDate: [this.Task.dueDate, [Validators.required]],
-        priority: [this.Task.priority, [Validators.required]],
-        status: [this.Task.status, [Validators.required]]
-      });
-      console.log(this.form.controls);     
-      
+      if (this.Task) {
+        this.form.title = this.Task.title;
+        this.form.description = this.Task.description;
+        this.form.dueDate = this.Task.dueDate;
+        this.form.priority = this.Task.priority;
+        this.form.status = this.Task.status;
+      }
     });
+    
   }
   
 
  async Edittaskk(){
-    if (this.form.valid) {
-      const formValue = this.form.value;
+    if (this.form) {
+      const formValue = this.form;
       console.log(formValue);     
       const userName = sessionStorage.getItem('username');
       const UpdatedTask = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);    
@@ -79,8 +82,6 @@ export class TaskeditComponent implements OnInit{
         }
       }
     } else {
-      this.formSubmitted = true;
-      this.form.markAllAsTouched();
     }
   }
 

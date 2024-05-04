@@ -24,17 +24,7 @@ export class UserprofileComponent implements OnInit{
     this.roterr.navigateByUrl('editprofile')
   }
 
-  handleFileInput(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        document.getElementById('profilePhoto')!.setAttribute('src', reader.result as string);
-        sessionStorage.setItem('picture',file.name)
-      };
-      reader.readAsDataURL(file);
-    }
-  }
+ 
   
   
 

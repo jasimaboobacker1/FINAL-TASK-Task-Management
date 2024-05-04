@@ -2,47 +2,101 @@
 <div class="container">
     <div class="wrapper">
       <div class="title"><span>Edit Your Task Details</span></div>
-      <form  (ngSubmit)="Edittaskk()" [formGroup]="form">
-
-        <!-- <div class="row">
-            <input type="text" name="id" id="id" formControlName="id" required placeholder="id">
-            <div *ngIf="formSubmitted && form.get('id')?.invalid" class="id">Title is required</div>
-          </div> -->
-       
-        <div class="row">
-            <input type="text" name="title" id="title" formControlName="title" required placeholder="title">
-            <div *ngIf="formSubmitted && form.get('title')?.invalid" class="inv">Title is required</div>
-        </div>
-        <div class="row">
-            <input type="text" name="description" id="description" formControlName="description" required placeholder="Description">
-            <div *ngIf="formSubmitted && form.get('description')?.invalid" class="inv">Description is required</div>
-        </div>
+      <form  #f="ngForm" (ngSubmit)="f.form.valid && Edittaskk()">
 
         <div class="row">
-            <input type="date" name="dueDate" id="dueDate" formControlName="dueDate" required placeholder="dueDate">
-            <div *ngIf="formSubmitted && form.get('dueDate')?.invalid" class="inv">DueDate is required</div>
-        </div>
-              <div style="display: flex;justify-content: space-between;">
-                 <div class="row">
-                  <label for="priority">Priority:</label>
-                  <select name="priority" id="priority" formControlName="priority" required>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                  </select>
-                  <div *ngIf="formSubmitted && form.get('priority')?.invalid" class="inv">Priority is required
-                    </div>
+            <input type="text" name="id" id="id"  required placeholder="title"
+            [(ngModel)]="form.title"
+            required
+            #title="ngModel"
+            [ngClass]="{'invalid': f.submitted && title.errors}"
+            >
+
+            @if (f.submitted && title.errors) {
+              <div class="feedback">
+                @if (title.errors['required']) {
+                  <div class="inv">title Is required</div>
+                }
+              </div>
+             }
+          </div>
+          <div class="row">
+            <input type="text" name="description" id="description"  required placeholder="description"
+            [(ngModel)]="form.description"
+            required
+            #description="ngModel"
+            [ngClass]="{'invalid': f.submitted && description.errors}"
+            >
+
+            @if (f.submitted && description.errors) {
+              <div class="feedback">
+                @if (description.errors['required']) {
+                  <div class="inv">description Is required</div>
+                }
+              </div>
+             }
+          </div>
+          <div class="row">
+            <input type="date" name="dueDate" id="dueDate"  required placeholder="dueDate"
+            [(ngModel)]="form.dueDate"
+            required
+            #dueDate="ngModel"
+            [ngClass]="{'invalid': f.submitted && dueDate.errors}"
+            >
+
+            @if (f.submitted && dueDate.errors) {
+              <div class="feedback">
+                @if (dueDate.errors['required']) {
+                  <div class="inv">dueDate Is required</div>
+                }
+              </div>
+             }
+          </div>
+
+          <div style="display: flex;justify-content: space-between;">
+
+            <div class="row">
+              <label for="priority">Priority:</label>
+              <select name="priority" id="priority" required
+              [(ngModel)]="form.priority"
+              required
+              #priority="ngModel"
+              [ngClass]="{'invalid': f.submitted && priority.errors}"
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              @if (f.submitted && priority.errors) {
+                <div class="feedback">
+                  @if (priority.errors['required']) {
+                    <div class="inv">priority Is required</div>
+                  }
                 </div>
-                <div class="row">
-                  <label for="status">Status:</label>
-                  <select name="status" id="status" formControlName="status" required>
-                    <option value="pending">Pending</option>
-                    <option value="completed">Complete</option>
-                  </select>
-                  <div *ngIf="formSubmitted && form.get('status')?.invalid" class="inv">status is required
-                    </div>
+               }
+            </div>
+
+            <div class="row">
+              <label for="status">status:</label>
+              <select name="status" id="status" required
+              [(ngModel)]="form.status"
+              required
+              #status="ngModel"
+              [ngClass]="{'invalid': f.submitted && status.errors}"
+              >
+              <option value="pending">Pending</option>
+              <option value="completed">Complete</option>
+              </select>
+              @if (f.submitted && status.errors) {
+                <div class="feedback">
+                  @if (status.errors['required']) {
+                    <div class="inv">status Is required</div>
+                  }
                 </div>
-        </div>
+               }
+            </div>
+
+          </div>
 
         <div class="req">
             <div class="row button">

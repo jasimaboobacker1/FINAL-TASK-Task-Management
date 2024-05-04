@@ -7,12 +7,11 @@ import { Chart } from 'chart.js/auto';
 import { ApiService } from '../../../Shared-Module/Services/api.service';
 import { tasks } from '../../../core/Interfaces/interfaces';
 import { NavComponent } from '../../../Shared-Module/nav/nav.component';
-import { OverduecheckPipe } from '../../../core/Pipes/overduecheck.pipe';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [FormsModule,CommonModule,RouterOutlet,RouterLink,NavComponent,OverduecheckPipe],
+  imports: [FormsModule,CommonModule,RouterOutlet,RouterLink,NavComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -93,7 +92,7 @@ export class DashboardComponent implements OnInit{
     });
   }
 
-  
+
 
   sortTasks(): void {
     if (this.sortColumn && this.Usertasks) {
@@ -106,9 +105,6 @@ export class DashboardComponent implements OnInit{
       });
     }
   }
-  
-  
-  
 
 
   ngOnInit(): void {
@@ -140,9 +136,9 @@ export class DashboardComponent implements OnInit{
       }
     );
     this.updateOverdueTasks();
-  // setInterval(() => {
-  //   this.updateOverdueTasks(); /
-  // }, 20000);
+  setInterval(() => {
+    this.updateOverdueTasks(); 
+  }, 20000);
   }
 
 
@@ -249,6 +245,7 @@ export class DashboardComponent implements OnInit{
           showConfirmButton: false,
           timer: 700 
         });
+        this.Alltask();
       }, (error) => {
       });
     } catch (error) {
