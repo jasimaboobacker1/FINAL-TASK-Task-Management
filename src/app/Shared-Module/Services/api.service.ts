@@ -57,6 +57,12 @@ export class ApiService {
     return this.http.put(url, Task);
   }
 
+ 
+  UpdateStatusOverdue(task: tasks) {
+    return this.http.put<tasks>(`${this.taskapiurl}/${task.id}`, task);
+  }
+  
+
 
   // UpdateTaskDetail
   UpdateTask(id: string, updatedTask: any) {

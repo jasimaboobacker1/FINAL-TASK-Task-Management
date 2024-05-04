@@ -12,17 +12,17 @@
                     <p><b>Due Date :</b> {{Task.dueDate}}</p>
                     <p><b>Priority :</b> {{Task.priority}}</p>
                     <b style="color: grey;">Status : </b> 
-                        <div [ngSwitch]="Task.status" style="display: inline-block;">
-                          <div *ngSwitchCase="'pending'" style="display: inline-block;">
-                            {{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)">
-                          </div>
-                          <div *ngSwitchCase="'overdue'" style="display: inline-block;">
-                            {{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)">
-                          </div>
-                          <div *ngSwitchDefault style="display: inline-block;">
-                            <span style="color: green; font-weight: 800;">{{ Task.status }}</span> <i class="fa-solid fa-check" style="color: #107e02;margin-top: 5px;"></i>
-                          </div>
-                        </div>               
+                    <ng-container [ngSwitch]="Task.status">
+                    <th *ngSwitchCase="'pending'">
+                    {{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)">
+                  </th>
+                  <th style="color: red;" *ngSwitchCase="'overdue'">
+                    {{ Task.status }} <input type="checkbox" (click)="updateStatus(Task)">
+                  </th>
+                  <th *ngSwitchDefault style="color: green;">
+                    {{ Task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i>
+                  </th>
+                </ng-container>     
                 </div>
                 <div class="btnsssss">
                   <button (click)="Cancell()" class="buttontaskview">Back</button>

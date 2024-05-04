@@ -42,28 +42,17 @@
                       <th>{{ task.dueDate }}</th>
                       <ng-container [ngSwitch]="task.status">
                         <th *ngSwitchCase="'pending'">
-                          {{ task.status }}
-                          <input type="checkbox" (click)="updateStatus(task)">
-                          <span style="color: red;" *ngIf="(task.dueDate | overduecheck) === 'overdue'" >
-                            (Overdue)
-                          </span>
-                          <span *ngIf="(task.dueDate | overduecheck) === 'pending'">
-                            Pending
-                          </span>
-                          
+                          {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
                         </th>
-                        <th *ngSwitchCase="'overdue'">
-                          <span [ngClass]="{'overdue': task.dueDate | overduecheck}">
-                            {{ task.status }}
-                          </span>
-                          <input type="checkbox" (click)="updateStatus(task)">
-                        </th>                       
+                        <th style="color: red;" *ngSwitchCase="'overdue'">
+                          {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
+                        </th>
                         <th *ngSwitchDefault style="color: green;">
                           {{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i>
                         </th>
-                      </ng-container>
+                      </ng-container>     
                         
-                       <td>
+                       <td style="display: flex;">
                           <a class="btn  btn-action mr-1" style="background-color: #353755;color:white;"  data-toggle="tooltip" title="" data-original-title="Edit" (click)="viewnavigte(task.id)">View Task</a>
                           <a class="btn btn-danger btn-action" style="margin-left: 7px;" data-toggle="tooltip" title=""   (click)="deleteTask(task.id)"><i class="fas fa-trash"></i></a>
                         </td>
@@ -101,27 +90,16 @@
                           <th>{{ task.dueDate }}</th>
                           <ng-container [ngSwitch]="task.status">
                             <th *ngSwitchCase="'pending'">
-                              {{ task.status }}
-                              <input type="checkbox" (click)="updateStatus(task)">
-                              <span style="color: red;" *ngIf="(task.dueDate | overduecheck) === 'overdue'" >
-                                (Overdue)
-                              </span>
-                              <span *ngIf="(task.dueDate | overduecheck) === 'pending'">
-                                Pending
-                              </span>
-                             
+                              {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
                             </th>
-                            <th *ngSwitchCase="'overdue'">
-                              <span [ngClass]="{'overdue': task.dueDate | overduecheck}">
-                                {{ task.status }}
-                              </span>
-                              <input type="checkbox" (click)="updateStatus(task)">
-                            </th>                       
+                            <th style="color: red;" *ngSwitchCase="'overdue'">
+                              {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
+                            </th>
                             <th *ngSwitchDefault style="color: green;">
                               {{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i>
                             </th>
-                          </ng-container>    
-                            <td>
+                          </ng-container>     
+                            <td style="display: flex;">
                               <a class="btn  btn-action mr-1" style="background-color: #353755;color:white;"  data-toggle="tooltip" title="" data-original-title="Edit">View Task</a>
                               <a class="btn btn-danger btn-action" style="margin-left: 7px;" data-toggle="tooltip" title=""   (click)="deleteTask(task.id)"><i class="fas fa-trash"></i></a>
                             </td>
@@ -159,26 +137,16 @@
                               <th>{{ task.dueDate }}</th>
                               <ng-container [ngSwitch]="task.status">
                                 <th *ngSwitchCase="'pending'">
-                                  {{ task.status }}
-                                  <span style="color: red;" *ngIf="(task.dueDate | overduecheck) === 'overdue'" >
-                                    (Overdue)
-                                  </span>
-                                  <span *ngIf="(task.dueDate | overduecheck) === 'pending'">
-                                    Pending
-                                  </span>
-                                  <input type="checkbox" (click)="updateStatus(task)">
+                                  {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
                                 </th>
-                                <th *ngSwitchCase="'overdue'">
-                                  <span [ngClass]="{'overdue': task.dueDate | overduecheck}">
-                                    {{ task.status }}
-                                  </span>
-                                  <input type="checkbox" (click)="updateStatus(task)">
-                                </th>                       
+                                <th style="color: red;" *ngSwitchCase="'overdue'">
+                                  {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
+                                </th>
                                 <th *ngSwitchDefault style="color: green;">
                                   {{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i>
                                 </th>
-                              </ng-container> 
-                                <td>
+                              </ng-container>     
+                                <td style="display: flex;">
                                   <a class="btn  btn-action mr-1" style="background-color: #353755;color:white;"  data-toggle="tooltip" title="" data-original-title="Edit">View Task</a>
                                   <a class="btn btn-danger btn-action" style="margin-left: 7px;" data-toggle="tooltip" title=""   (click)="deleteTask(task.id)"><i class="fas fa-trash"></i></a>
                                 </td>
@@ -192,6 +160,8 @@
                     </div>
                   </div>
                 </div>
+
+
                 <!-- overdue table -->
 
                 <div class="container" *ngIf="Overtaskshow">
@@ -217,13 +187,13 @@
                                   <th *ngSwitchCase="'pending'">
                                     {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
                                   </th>
-                                  <th *ngSwitchCase="'overdue'">
+                                  <th style="color: red;" *ngSwitchCase="'overdue'">
                                     {{ task.status }} <input type="checkbox" (click)="updateStatus(task)">
                                   </th>
                                   <th *ngSwitchDefault style="color: green;">
                                     {{ task.status }} <i class="fa-solid fa-check" style="color: #107e02;"></i>
                                   </th>
-                                </ng-container>             
+                                </ng-container>     
                                   <td>
                                     <a class="btn  btn-action mr-1" style="background-color: #353755;color:white;"  data-toggle="tooltip" title="" data-original-title="Edit">View Task</a>
                                     <a class="btn btn-danger btn-action" style="margin-left: 7px;" data-toggle="tooltip" title=""   (click)="deleteTask(task.id)"><i class="fas fa-trash"></i></a>

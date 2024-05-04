@@ -18,6 +18,8 @@ import { OverduecheckPipe } from '../../../core/Pipes/overduecheck.pipe';
 })
 export class DashboardComponent implements OnInit{
 
+ 
+
   tasks:any;
   pendingUserTasks: tasks[] = [];
   CompletedUserTasks: tasks[] = [];
@@ -90,11 +92,6 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.Alltask();
-    this.LoadPiechart();
-  }
-
-
-  LoadPiechart(){
     this.taskService.Getalltasks().subscribe(
       (res) => {
         
@@ -121,8 +118,28 @@ export class DashboardComponent implements OnInit{
         console.error('Error fetching tasks:', error);
       }
     );
+    this.updateOverdueTasks();
+  // setInterval(() => {
+  //   this.updateOverdueTasks(); /
+  // }, 20000);
   }
 
+
+  updateOverdueTasks(): void {
+    this.taskService.Getalltasks().subscribe((tasks: any) => {
+      tasks.forEach((task: any) => {
+        if (task.status !== 'overdue' && new Date(task.dueDate) < new Date() && task.status !== 'completed') {
+          task.status = 'overdue';
+          this.taskService.UpdateStatusOverdue(task).subscribe(() => {
+            console.log('Task status updated to overdue');
+          }, (error) => {
+            console.error('Error updating task status:', error);
+          });
+        }
+      });
+    });
+  }
+  
   
 
   // getting all tasks
@@ -190,7 +207,6 @@ export class DashboardComponent implements OnInit{
         showConfirmButton: false,
         timer: 1500
     });   
-    this.LoadPiechart();
   })
   }
 
