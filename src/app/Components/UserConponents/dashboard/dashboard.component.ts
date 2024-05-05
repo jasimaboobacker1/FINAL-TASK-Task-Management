@@ -105,10 +105,15 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.Alltask();
+    const UserName=sessionStorage.getItem('username')
     this.taskService.Getalltasks().subscribe(
       (res) => {
-        
         this.data = res ?? [];
+
+        this.data = this.data.filter((task: any) => task.username === UserName);
+        console.log(this.data);
+        
+
         let highCount = 0;
         let medCount = 0;
         let lowCount = 0;
