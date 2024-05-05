@@ -57,9 +57,19 @@ export class PasschangeComponent implements OnInit{
     if (this.form.valid) {
       const oldPassword = this.form.value.password;
       const newPassword = this.form.value.newpassword;
+
+      if (oldPassword === newPassword) {
+        Swal.fire({
+          icon: 'error',
+          title: 'New password must be different from old password',
+          timer: 1500,
+          showConfirmButton: false
+        });
+        return; 
+      }
+
       if (oldPassword === this.User.password) {
         this.User.password = newPassword;
-  
         try {
           const res = await this.service.ChangePassword(this.User).toPromise();
           console.log(res);
@@ -92,6 +102,7 @@ export class PasschangeComponent implements OnInit{
       this.form.markAllAsTouched();
     }
   }
+
   
   navigatetoprofile(){
     this.roterr.navigateByUrl('profile')

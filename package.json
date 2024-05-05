@@ -21,6 +21,7 @@
     "@angular/platform-server": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.4",
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "ag-charts-angular": "^9.2.0",
     "ag-charts-community": "^9.2.0",
     "angular-highcharts": "^17.0.1",
