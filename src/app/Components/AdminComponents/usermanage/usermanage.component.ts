@@ -21,7 +21,7 @@ export class UsermanageComponent implements OnInit{
   ngOnInit(): void {
     this.GetUsers();
   }
-
+  // getting all users
   GetUsers(){
     this.service.Getallusers().subscribe((res) => {
       this.users = res;
@@ -29,7 +29,8 @@ export class UsermanageComponent implements OnInit{
     });
 
   }
-
+  
+  // Blocking(deleting) user code
   async Blockuser(id:number){
     try{
      await this.service.DeleteUser(id).subscribe((res)=>{  

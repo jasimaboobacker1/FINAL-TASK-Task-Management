@@ -34,10 +34,12 @@ export class PasschangeComponent implements OnInit{
 
   ngOnInit(): void {
     this.UserName = sessionStorage.getItem('username');
+    // getting all users
     this.service.Getallusers().subscribe(
       (res) => {
         try {
           this.Users = res;
+          // finding the loggined user
           this.User = this.Users.find((user: any) => user.username === this.UserName);
         } catch (error) {
           console.error('Error fetching user data:', error);
@@ -52,7 +54,7 @@ export class PasschangeComponent implements OnInit{
       newpassword: ['', [Validators.required]]
     });
   }
-
+  // password changing code
   async Changepass() {
     if (this.form.valid) {
       const oldPassword = this.form.value.password;
@@ -67,7 +69,7 @@ export class PasschangeComponent implements OnInit{
         });
         return; 
       }
-
+    //  checking oldpass == newpass or not
       if (oldPassword === this.User.password) {
         this.User.password = newPassword;
         try {
@@ -103,11 +105,13 @@ export class PasschangeComponent implements OnInit{
     }
   }
 
-  
+  // navigating to profile page
   navigatetoprofile(){
     this.roterr.navigateByUrl('profile')
   }
 
+  
+// candeactivate code
   canExit(): Promise<boolean> {
     if (this.form.dirty) {
       return Swal.fire({

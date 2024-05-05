@@ -17,7 +17,7 @@ export class ApiService {
      return this.http.get(this.userapiurl)
   }
 
-  // GetUser
+  // GettingUser
   GetUser(email:any){
   return this.http.get(`${this.userapiurl}/${email}`)
   }
@@ -27,7 +27,7 @@ export class ApiService {
     return this.http.get(this.taskapiurl)
   }
 
-  // getTask
+  // gettingTask
   GetTask(id: number) {
     return this.http.get(`${this.taskapiurl}/${id}`);
   }
@@ -44,20 +44,16 @@ export class ApiService {
     return this.http.put(url, userToUpdate);
   }
 
- Updatepeofilephoto(Updateduser: any) {
-  console.log(Updateduser);
-     const url = `${this.userapiurl}/${Updateduser.id}`; 
-     return this.http.put(url, Updateduser);
-  }
+ 
 
-  // UpdateStatus
+  // UpdateStatus code
   UpdateStatus(Task: any) {
     const url = `${this.taskapiurl}/${Task.id}`;
     Task.status = 'completed'; 
     return this.http.put(url, Task);
   }
 
- 
+  // updating status to overdue
   UpdateStatusOverdue(task: tasks) {
     return this.http.put<tasks>(`${this.taskapiurl}/${task.id}`, task);
   }

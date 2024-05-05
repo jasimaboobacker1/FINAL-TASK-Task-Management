@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/Guards/auth.guard';
 import { adminauthGuard } from './core/Guards/adminauth.guard';
+import { PasschangeComponent } from './Components/UserConponents/passchange/passchange.component';
+import { CreattaskComponent } from './Components/UserConponents/creattask/creattask.component';
 
 export const routes: Routes = [
     {
@@ -23,13 +25,14 @@ export const routes: Routes = [
     {
         path:'editprofile',
         loadComponent:()=>import('./Components/UserConponents/userprofile/editprofile/editprofile.component').then((c)=>c.EditprofileComponent),
-        canActivate:[authGuard]
+        canActivate:[authGuard],
+
     },
     {
         path:'changepassword',
         loadComponent:()=>import('./Components/UserConponents/passchange/passchange.component').then((c)=>c.PasschangeComponent),
         canActivate:[authGuard],
-        // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
+        canDeactivate:[(Component:PasschangeComponent) => Component.canExit()]
 
     },
     {
@@ -40,9 +43,7 @@ export const routes: Routes = [
     {
         path:'edittask/:id',
         loadComponent:()=>import('./Components/UserConponents/taskview/taskedit/taskedit.component').then((c)=>c.TaskeditComponent),
-        canActivate:[authGuard]
-
-       
+        canActivate:[authGuard],
     },
     {
         path:'viewtask/:id',
@@ -52,8 +53,8 @@ export const routes: Routes = [
     {
         path:'createtask',
         loadComponent:()=>import('./Components/UserConponents/creattask/creattask.component').then((c)=>c.CreattaskComponent),
-        canActivate:[authGuard]
-        // canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
+        canActivate:[authGuard],
+        canDeactivate:[(Component:CreattaskComponent) => Component.canExit()]
     },
     {
         path:'admindashboard',

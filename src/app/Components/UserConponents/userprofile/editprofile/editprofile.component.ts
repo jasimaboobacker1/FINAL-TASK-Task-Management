@@ -35,10 +35,12 @@ export class EditprofileComponent implements OnInit{
   
   ngOnInit(): void {
     this.UserName = sessionStorage.getItem('username');
+    // getting all user
     this.service.Getallusers().subscribe(
       (res) => {
         try {
           this.Users = res;
+          // finding loggined user details
           this.User = this.Users.find((user: any) => user.username === this.UserName);
           if (this.User) {
             this.form.place = this.User.place;
@@ -59,7 +61,8 @@ export class EditprofileComponent implements OnInit{
       }
     );
   }
-  
+
+  // Adding details of user 
  async Adddetail() {
     if (this.form) {
       const formData = this.form;
@@ -93,6 +96,8 @@ export class EditprofileComponent implements OnInit{
      
     }
   }
+
+ 
 
   Cancel(){
     this.roterr.navigateByUrl('profile')

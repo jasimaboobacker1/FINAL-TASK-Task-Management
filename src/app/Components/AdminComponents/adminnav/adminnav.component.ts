@@ -13,7 +13,7 @@ import { Router, RouterLink } from '@angular/router';
 export class AdminnavComponent {
 
   constructor(private router:Router){}
-
+  // admin logout check
   logout(){
     sessionStorage.clear();
     this.router.navigateByUrl('login')

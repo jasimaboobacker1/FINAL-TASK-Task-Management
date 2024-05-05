@@ -21,7 +21,8 @@ export class NavComponent {
 
 
   constructor(private router:Router){}
-
+ 
+  // Checking User logined or not to show Pages for user access only
   UserCheck(){
     if(typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token')){
       this.userShow=true;
@@ -29,7 +30,7 @@ export class NavComponent {
     } 
   }
 
-
+//  logout code
   logout(){
     sessionStorage.clear();
     Swal.fire({
@@ -40,7 +41,8 @@ export class NavComponent {
     });  
     this.router.navigateByUrl('');
   }
-
+ 
+  // for checking user logged out or not 
   logoutCheck() {
     if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('token')) {
       this.logoutshoow = true;

@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit{
   }
 
 
-
+  // pie chart
   createPieChart(lowCount:number, medCount:number, highCount:number): void {
     const ctx = document.getElementById('pieChart') as HTMLCanvasElement;
     this.pieChart = new Chart(ctx, {
@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit{
   }
 
 
-
+  // sorting task
   sortTasks(): void {
     if (this.sortColumn && this.Usertasks) {
       this.Usertasks.sort((a: any, b: any) => {
@@ -144,7 +144,7 @@ export class DashboardComponent implements OnInit{
   }, 50000);
   }
 
-
+  // updating status to overdue code
   updateOverdueTasks(): void {
     this.taskService.Getalltasks().subscribe((tasks: any) => {
       tasks.forEach((task: any) => {
@@ -162,7 +162,7 @@ export class DashboardComponent implements OnInit{
   
   
 
-  // getting all tasks
+  // getting all tasks 
   Alltask() {
     this.taskService.Getalltasks().subscribe((res) => {
       this.tasksDetails = res;

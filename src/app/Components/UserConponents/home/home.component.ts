@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit{
     this.LoginCheck();
   }
 
-
+  // navigating to login
   LoginNavigate(){
     this.router.navigateByUrl('login')
   }
-
+//  login check ,checking weather loggined or not
   LoginCheck(){
     if (typeof sessionStorage !== 'undefined') {
             this.loginshow=false;

@@ -19,6 +19,7 @@ export class TaskeditComponent implements OnInit{
   TaskId: any;
   Task: any;
   Tasks:any;
+  invalid=false;
 
   constructor(private route: ActivatedRoute,private service:ApiService,private fb: FormBuilder,private router:Router)
   {
@@ -34,9 +35,12 @@ export class TaskeditComponent implements OnInit{
 
 
   ngOnInit(): void {
+    // geeting id from params
     this.TaskId = Number(this.route.snapshot.paramMap.get('id'));
+    // getting all tasks
     this.service.Getalltasks().subscribe((res) => {
       this.Tasks = res;
+      // finding that one task
       this.Task = this.Tasks.find((taskkk: tasks) => taskkk.id === this.TaskId);
       console.log(this.Task);
       if (this.Task) {
@@ -50,7 +54,7 @@ export class TaskeditComponent implements OnInit{
     
   }
   
-
+  // edit task code
  async Edittaskk(){
     if (this.form) {
       const formValue = this.form;
@@ -82,7 +86,11 @@ export class TaskeditComponent implements OnInit{
         }
       }
     } else {
+       
     }
   }
+
+ 
+  
 
 }

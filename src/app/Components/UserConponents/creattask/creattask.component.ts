@@ -42,7 +42,7 @@ export class CreattaskComponent implements OnInit{
       priority: ['', [Validators.required]],
       status: ['', [Validators.required]],
     });
-
+    // getting user
     this.UserName = sessionStorage.getItem('username');
         this.service.Getallusers().subscribe(
       (res) => {
@@ -59,7 +59,7 @@ export class CreattaskComponent implements OnInit{
       }
     );
   }
-
+  // adding task detail code with username
   async Addtaskk(){
     if(this.form.valid){
       const formValue = this.form.value;
@@ -89,14 +89,11 @@ export class CreattaskComponent implements OnInit{
   }
   
   
-  // generateTaskId(): number {
-  //   return Math.floor(Math.random() * 1000) + 1;
-  // }
   
 
-  
-  canExit(): Promise<boolean> {
-    if (this.form.dirty) {
+  // candeactivate code
+  canExit() {
+    if (this.form && this.form.invalid) {
       return Swal.fire({
         title: "Are you sure?",
         text: "You have unsaved changes. Do you want to navigate away?",
@@ -112,6 +109,7 @@ export class CreattaskComponent implements OnInit{
       return Promise.resolve(true);
     }
   }
+  
   
   
 }
