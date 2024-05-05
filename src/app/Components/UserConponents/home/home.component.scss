@@ -30,11 +30,43 @@
 .landing{
     width: 100%;
     height: 670px;
-    background: url('https://cdn2.vectorstock.com/i/1000x1000/90/46/task-management-concept-banner-header-vector-24529046.jpg');
+    display: flex;
+    background: url('/src/assets/25812305.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.leftlanding{
+    width: 40%;
+    height:100%;
+    padding:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.landingimgg{
+    width:100%;
+    height: 100%;
+}
+
+.rightlanding{
+    width: 60%;
+    height:100%;
+    padding:30px;
+}
+.para{
+    width: 559px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    }
+.manage{
+    font-size: 65px;
+      font-family:Oswald, sans-serif;
+      }
 
 .cont{
     width: 500px;
@@ -219,7 +251,13 @@
   }
 
 
-@media (max-width: 550px){
+@media (max-width: 650px){
+    .landing{
+        width: 100%;
+        height: 670px;
+        display: flex;
+        flex-direction: column;
+    }
     .second-section{
         width: 100%;
         height: auto;
@@ -228,6 +266,31 @@
         align-items: center;
         justify-content: center;
         justify-content: space-around;
+    }
+    .para{
+    width: 289px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    }
+    .manage{
+  font-size: 45px;
+    font-family:Oswald, sans-serif;
+    }
+
+    .leftlanding{
+        width: 100%;
+        height:100%;
+        padding:30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .rightlanding{
+        width: 100%;
+        height:100%;
+        padding:30px;
     }
     .second-section-image{
        display: none;
@@ -289,6 +352,17 @@
     .lists ul li i{
         margin-right: 10px;
         
+    }
+    .first-section{
+        width: 100%;
+        height: auto;
+        background-color: white; 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 45px;
+        margin-bottom: 130px;
+        padding-bottom: 45px;
     }
 }
 
