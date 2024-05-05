@@ -8,17 +8,19 @@
   <div class="right">
     <div class="buttons">
        <div class="btnssssss" >
-          <button class="btnfilter" type="button"  (click)="Addnavigate()">Add Task</button>
+          <button class="btnfilteradd" type="button"  (click)="Addnavigate()">Add Task</button>
           <button class="btnfilter" type="button"  (click)="Alltask()">All Tasks</button>
           <button class="btnfilter" type="button" (click)="Pending()">Pending Tasks</button>
           <button class="btnfilter" type="button"  (click)="Completed()">Completed Tasks</button>
           <button class="btnfilter" type="button"  (click)="Overdue()">OverDue Tasks</button>
-          <h6>Sort by :</h6>
-          <select class="btnfilterselect" [(ngModel)]="sortColumn" (change)="sortTasks()" >
+          
+          <select class="btnfilterselect" style="color: black;" [(ngModel)]="sortColumn" (change)="sortTasks()">
+            <option value="" selected>Sort by</option>
             <option value="title">Task Name</option>
             <option value="dueDate">Due Date</option>
             <option value="status">Status</option>
           </select>
+          
        </div>
        <div class="btnssssssss" >
        <h1 style="font-size: 60px;font-weight: 900;">{{taskcount}}</h1>

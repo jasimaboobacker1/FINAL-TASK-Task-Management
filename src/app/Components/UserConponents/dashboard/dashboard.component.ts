@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit{
   taskcount:number;
   
 
-  sortColumn: any;
+  sortColumn: string = "";
   sortDirection: 'asc' | 'desc' = 'asc';
  
  
@@ -217,18 +217,20 @@ export class DashboardComponent implements OnInit{
 
   }
   
-  //  deleting task
-  deleteTask(taskId:number){
-    this.taskService.DeleteTask(taskId).subscribe((res)=>{
-      this.Alltask();
-      Swal.fire({
-        icon: 'success',
-        title: 'Deleted successfully',
-        showConfirmButton: false,
-        timer: 1500
-    });   
+ //  deleting task
+deleteTask(taskId: number) {
+  this.taskService.DeleteTask(taskId).subscribe((res) => {
+    this.Alltask();
+    this.createPieChart(this.lowcount.length, this.medcount.length, this.highcount.length);
+    Swal.fire({
+      icon: 'success',
+      title: 'Deleted successfully',
+      showConfirmButton: false,
+      timer: 1500
+    });
   })
-  }
+}
+
 
 
   trackById(index: number, item: any) {
