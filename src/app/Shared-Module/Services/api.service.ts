@@ -89,5 +89,10 @@ export class ApiService {
     return this.http.delete(`${this.userapiurl}/${id}`)
   }
 
+  updateUserPicture(user: any) {
+    const userId = user.id; // Assuming user id is available in the user object
+    return this.http.patch(`http://your-json-server-url/users/${userId}`, { picture: user.picture });
+  }
+
   
 }

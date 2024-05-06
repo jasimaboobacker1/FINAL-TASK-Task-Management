@@ -2,9 +2,8 @@
 <div class="container">
     <div class="card-container">
         <span class="pro" (click)="Edit()">Add/Edit</span>
-
-        <img id="profilePhoto" src="assets/profile-illustration.png" class="round" width="100px" height="100px" alt="user"  />
-       <h3>{{User.username}}</h3>
+        <img id="profilePhoto" src="assets/profile-illustration.png" class="round" width="100px" height="100px" alt="user" />
+          <h3>{{User.username}}</h3>
         <p>{{ User.designation || 'Add Designation ' }}</p>
         <p>{{ User.birthdate || 'Add Birthdate' }}</p>
         <h6>{{ User.place || 'Add Place' }}</h6>
@@ -13,13 +12,12 @@
         <div class="skills">
           <div style="width: auto;">  <button (click)="Pro()" class="backbtn">Back</button>
            <button (click)="change()" class="backbtn">Change password</button>
-        </div>
+                </div>
             <ul>
                 <li><a style="text-decoration: none;color: black;" href="{{ User.facebook }}" target="_blank">Facebook</a></li>
                 <li><a style="text-decoration: none;color: black;" href="{{ User.instagram }}" target="_blank">Instagram</a></li>
                 <li><a style="text-decoration: none;color: black;" href="{{ User.linkedIn }}" target="_blank">LinkedIn</a></li>
-              </ul>
-              
+              </ul> 
         </div>
     </div>
 </div>

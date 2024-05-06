@@ -17,6 +17,7 @@ export class UserprofileComponent implements OnInit{
    User:any;
   Users:any;
   UserName:any;
+  Userpic: any;
  
   constructor(private service:ApiService,private router:ActivatedRoute,private roterr:Router){}
   // navigating to editprofile
@@ -44,13 +45,16 @@ export class UserprofileComponent implements OnInit{
       }
     );
   }
+
   // navigating to dashboard
   Pro(){
     this.roterr.navigateByUrl('dashboard')
   }
+
   // navigating to password change form
   change(){
     this.roterr.navigateByUrl('changepassword')
   }
-  
+
+ 
 }
