@@ -25,7 +25,6 @@ export class UsermanageComponent implements OnInit{
   GetUsers(){
     this.service.Getallusers().subscribe((res) => {
       this.users = res;
-      console.log(this.users);
     });
 
   }

@@ -32,7 +32,6 @@ export class TaskviewComponent implements OnInit{
         this.service.Getalltasks().subscribe((res) => {
       this.Tasks = res;
       this.Task = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);
-      console.log(this.Task); 
     });
 
   }

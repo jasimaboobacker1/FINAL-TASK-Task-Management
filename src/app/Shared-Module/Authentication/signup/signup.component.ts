@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit{
       password: ['', [Validators.required, Validators.minLength(6)]],
       username: ['', [Validators.required]],
     });
-    console.log(this.form.value);
     
   }
 

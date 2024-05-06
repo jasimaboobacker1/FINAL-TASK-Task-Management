@@ -42,7 +42,6 @@ export class TaskeditComponent implements OnInit{
       this.Tasks = res;
       // finding that one task
       this.Task = this.Tasks.find((taskkk: tasks) => taskkk.id === this.TaskId);
-      console.log(this.Task);
       if (this.Task) {
         this.form.title = this.Task.title;
         this.form.description = this.Task.description;
@@ -58,7 +57,6 @@ export class TaskeditComponent implements OnInit{
  async Edittaskk(){
     if (this.form) {
       const formValue = this.form;
-      console.log(formValue);     
       const userName = sessionStorage.getItem('username');
       const UpdatedTask = this.Tasks.find((taskkk: any) => taskkk.id === this.TaskId);    
       if (UpdatedTask) {
