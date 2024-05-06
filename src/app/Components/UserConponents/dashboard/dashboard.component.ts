@@ -221,12 +221,11 @@ export class DashboardComponent implements OnInit{
 deleteTask(taskId: number) {
   this.taskService.DeleteTask(taskId).subscribe((res) => {
     this.Alltask();
-    this.createPieChart(this.lowcount.length, this.medcount.length, this.highcount.length);
     Swal.fire({
-      icon: 'success',
-      title: 'Deleted successfully',
+      icon: 'error',
+      title: 'Deleted',
       showConfirmButton: false,
-      timer: 1500
+      timer: 700 
     });
   })
 }
