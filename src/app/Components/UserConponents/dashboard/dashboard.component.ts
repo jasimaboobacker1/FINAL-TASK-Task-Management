@@ -137,11 +137,7 @@ export class DashboardComponent implements OnInit{
       }
     );
     this.updateOverdueTasks();
-  setInterval(() => {
-    this.updateOverdueTasks();
-    window.location.reload();
-
-  }, 80000);
+ 
   }
 
   // updating status to overdue code
